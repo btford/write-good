@@ -19,5 +19,9 @@
   "license": "MIT",
   "devDependencies": {
     "jasmine-node": "^1.14.3"
+  },
+  "dependencies": {
+    "passive-voice": "0.0.0",
+    "weasel-words": "0.0.0"
   }
 }

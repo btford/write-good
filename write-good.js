@@ -1,41 +1,19 @@
-var weasels = [
-  'many',
-  'various',
-  'very',
-  'fairly',
-  'several',
-  'extremely',
-  'exceedingly',
-  'quite',
-  'remarkably',
-  'few',
-  'surprisingly',
-  'mostly',
-  'largely',
-  'huge',
-  'tiny',
-  'is a number',
-  'are a number',
-  'excellent',
-  'interestingly',
-  'significantly',
-  'substantially',
-  'clearly',
-  'vast',
-  'relatively',
-  'completely'
-];
-
-var re = new RegExp('(' + weasels.join('|') + ')', 'gi');
+var weasels = require('weasel-words'),
+    passive = require('passive-voice');
 
 module.exports = function (text, opts) {
-  var suggestions = [];
-  while (match = re.exec(text)) {
-    suggestions.push({
-      index: match.index,
-      offset: match[0].length,
-      reason: '"' + match[0] + '" is a weasel word'
-    });
+  return weasels(text).map(reasonable('is a weasel word')).
+      concat(passive(text).map(reasonable('is passive voice'))).
+      sort(function (a, b) {
+        return a.index < b.index ? -1 : 1;
+      });
+
+  function reasonable (reason) {
+    return function (suggestion) {
+      suggestion.reason = '"' +
+          text.substr(suggestion.index, suggestion.offset) +
+          '" ' + reason;
+      return suggestion;
+    };
   }
-  return suggestions;
 };
