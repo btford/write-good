@@ -2,7 +2,7 @@
 
 **WIP**
 
-Naive linter for English prose to help you write less bad.
+Naive linter for English prose for developers who can't write good and wanna do other stuff good too.
 
 
 ## Use
