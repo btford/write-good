@@ -1,0 +1,45 @@
+# write good
+
+**WIP**
+
+Naive linter for English prose to help you write less bad.
+
+
+## Use
+
+```shell
+npm install write-good
+```
+
+
+## API
+
+`writeGood` is a function that takes a string and returns an array of suggestions.
+
+```javascript
+var writeGood = require('write-good');
+
+var suggestions = writeGood('So the cat was stolen');
+
+// suggestions:
+//
+// [{
+//   suggestion: "omit 'so' from the beginning of sentences",
+//   index: 0, offset: 2
+// }, {
+//   suggestion: "avoid passive voice",
+//   index: 11, offset: 2
+// }]
+```
+
+
+## See also
+
+* [shell script for avoiding passive voice and "weasel words"](http://matt.might.net/articles/shell-scripts-for-passive-voice-weasel-words-duplicates/) – I based my initial implementation on this
+* [writegood mode](https://github.com/bnbeckwith/writegood-mode) for emacs
+* [Flesch–Kincaid readability](http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test)
+* [natural](https://github.com/NaturalNode/natural) – general purpose NLP toolkit in JavaScript
+* [WordNet](http://wordnet.princeton.edu/) – lexical database of the English language
+
+## License
+MIT
