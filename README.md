@@ -1,7 +1,5 @@
 # write good
 
-**WIP**
-
 Naive linter for English prose for developers who can't write good and wanna do other stuff good too.
 
 
