@@ -32,6 +32,22 @@ describe('writeGood', function () {
     ]);
   });
 
+  it('should detect sentences that start with "so"', function () {
+    expect(writeGood('So the best thing to do is wait.')).toEqual([
+      { index: 0, offset: 2, reason: '"So" adds no meaning' }
+    ]);
+  });
+
+  it('should not detect "So?"', function () {
+    expect(writeGood('So?')).toEqual([]);
+  });
+
+  it('should detect clauses after a semicolon that start with "so"', function () {
+    expect(writeGood('This is a test; so it should pass or fail.')).toEqual([
+      { index: 16, offset: 2, reason: '"so" adds no meaning' }
+    ]);
+  });
+
   it('should order suggestions by index', function () {
     expect(writeGood('It has been said that few developers write well.')).toEqual([
       { index: 7, offset: 9, reason: '"been said" is passive voice' },
