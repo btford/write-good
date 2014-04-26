@@ -40,6 +40,10 @@ describe('writeGood', function () {
     ]);
   });
 
+  it('should not detect lexical illusions for non-words', function () {
+    expect(writeGood('// //')).toEqual([]);
+  });
+
   it('should detect sentences that start with "so"', function () {
     expect(writeGood('So the best thing to do is wait.')).toEqual([
       { index: 0, offset: 2, reason: '"So" adds no meaning' }
