@@ -8,12 +8,6 @@ describe('writeGood', function () {
     ]);
   });
 
-  it('should detect passive voice', function () {
-    expect(writeGood('The scipt was killed')).toEqual([
-      { index: 10, offset: 10, reason: '"was killed" is passive voice' }
-    ]);
-  });
-
   it('should detect lexical illusions', function () {
     expect(writeGood('the the')).toEqual([
       { index: 4, offset: 3, reason: '"the" is repeated' }
@@ -50,7 +44,6 @@ describe('writeGood', function () {
 
   it('should order suggestions by index', function () {
     expect(writeGood('It has been said that few developers write well.')).toEqual([
-      { index: 7, offset: 9, reason: '"been said" is passive voice' },
       { index: 22, offset: 3, reason: '"few" is a weasel word' }
     ]);
   });

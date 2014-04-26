@@ -1,11 +1,9 @@
 var weasels  = require('weasel-words'),
     illusion = require('./lib/lexical-illusions'),
-    so       = require('./lib/starts-with-so'),
-    passive  = require('passive-voice');
+    so       = require('./lib/starts-with-so');
 
 module.exports = function (text, opts) {
   return weasels(text).map(reasonable('is a weasel word')).
-      concat(passive(text).map(reasonable('is passive voice'))).
       concat(illusion(text).map(reasonable('is repeated'))).
       concat(so(text).map(reasonable('adds no meaning'))).
       sort(function (a, b) {
