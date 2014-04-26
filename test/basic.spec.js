@@ -14,10 +14,18 @@ describe('writeGood', function () {
     ]);
   });
 
+  it('should not detect passive voice if that check is disabled', function () {
+    expect(writeGood('The scipt was killed', { passive: false })).toEqual([]);
+  });
+
   it('should detect lexical illusions', function () {
     expect(writeGood('the the')).toEqual([
       { index: 4, offset: 3, reason: '"the" is repeated' }
     ]);
+  });
+
+  it('should not detect lexical illusions if that check is disabled', function () {
+    expect(writeGood('the the', { illusion: false })).toEqual([]);
   });
 
   it('should detect lexical illusions with line breaks', function () {
@@ -36,6 +44,10 @@ describe('writeGood', function () {
     expect(writeGood('So the best thing to do is wait.')).toEqual([
       { index: 0, offset: 2, reason: '"So" adds no meaning' }
     ]);
+  });
+
+  it('should not detect sentences that start with "so" if that check is disabled', function () {
+    expect(writeGood('So the best thing to do is wait.', { so: false })).toEqual([]);
   });
 
   it('should not detect "So?"', function () {
