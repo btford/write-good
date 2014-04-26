@@ -1,4 +1,4 @@
-# write good
+# write good [![Build Status](https://travis-ci.org/btford/write-good.svg?branch=master)](https://travis-ci.org/btford/write-good)
 
 Naive linter for English prose for developers who can't write good and wanna do other stuff good too.
 
