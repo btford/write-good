@@ -17,13 +17,16 @@ npm install write-good
 ```javascript
 var writeGood = require('write-good');
 
-var suggestions = writeGood('So the cat was stolen');
+var suggestions = writeGood('So the cat was stolen.');
 
 // suggestions:
 //
 // [{
-//   suggestion: "omit 'so' from the beginning of sentences",
+//   suggestion: "omit 'So' from the beginning of sentences",
 //   index: 0, offset: 2
+// }, {
+//   suggestion: "'was stolen' is passive voice",
+//   index: 11, offset: 10
 // }]
 ```
 
