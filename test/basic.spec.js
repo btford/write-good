@@ -67,3 +67,23 @@ describe('writeGood', function () {
     ]);
   });
 });
+
+describe('annotate', function () {
+  var annotate = writeGood.annotate;
+
+  it('should detect weasel words', function () {
+    var text = 'Remarkably few developers write well.'
+    var suggestions = writeGood(text);
+    var annotations = annotate(text, suggestions);
+
+    expect(annotations[0]).toBe(
+      'Remarkably few developers write well.\n' +
+      '^^^^^^^^^^\n' +
+      '"Remarkably" is a weasel word on line 1 at column 0');
+
+    expect(annotations[1]).toBe(
+      'Remarkably few developers write well.\n' +
+      '           ^^^\n' +
+      '"few" is a weasel word on line 1 at column 11');
+  });
+});

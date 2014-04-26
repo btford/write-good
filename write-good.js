@@ -28,3 +28,5 @@ module.exports = function (text, opts) {
     };
   }
 };
+
+module.exports.annotate = require('./lib/annotate');
