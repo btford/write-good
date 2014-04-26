@@ -9,13 +9,13 @@ describe('writeGood', function () {
   });
 
   it('should detect passive voice', function () {
-    expect(writeGood('The scipt was killed')).toEqual([
-      { index: 10, offset: 10, reason: '"was killed" is passive voice' }
+    expect(writeGood('The script was killed')).toEqual([
+      { index: 11, offset: 10, reason: '"was killed" is passive voice' }
     ]);
   });
 
   it('should not detect passive voice if that check is disabled', function () {
-    expect(writeGood('The scipt was killed', { passive: false })).toEqual([]);
+    expect(writeGood('The script was killed', { passive: false })).toEqual([]);
   });
 
   it('should detect lexical illusions', function () {
