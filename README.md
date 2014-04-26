@@ -30,6 +30,34 @@ var suggestions = writeGood('So the cat was stolen');
 // }]
 ```
 
+`writeGood` takes an optional second argument that allows you to disable certain checks.
+
+You can disable checking for passive voice like this:
+
+```javascript
+var writeGood = require('write-good');
+
+var suggestions = writeGood('So the cat was stolen', { passive: false});
+// suggestions: []
+```
+
+
+## Checks
+
+You can disable any combination of the following by providing a key with value `false` as the second argument to `writeGood`.
+
+### `passive`
+Checks for passive voice.
+
+### `illusion`
+Checks for lexical illusions – cases where a word is repeated.
+
+### `so`
+Checks for `so` at the beginning of the sentence.
+
+### `weasel`
+Checks for "weasel words."
+
 
 ## See also
 
@@ -48,6 +76,7 @@ They might be helpful.
 
 * [Elements of Style](http://www.bartleby.com/141/)
 * [Flesch–Kincaid readability](http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test)
+
 
 ## License
 MIT
