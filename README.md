@@ -66,6 +66,18 @@ In README.md
 "was stolen" is passive voice on line 28 at column 19
 ```
 
+You can run just specific checks like this:
+
+```shell
+write-good *.md --weasel --so
+```
+
+Or exclude checks like this:
+
+```shell
+write-good *.md --no-passive
+```
+
 
 ## Checks
 
