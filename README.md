@@ -42,6 +42,31 @@ var suggestions = writeGood('So the cat was stolen', { passive: false});
 ```
 
 
+## CLI
+
+You can use `write-good` as a command-line tool by installing it globally:
+
+```shell
+npm install -g write-good
+```
+
+`write-good` takes a [glob](https://github.com/isaacs/node-glob) and prints suggestions to stdout:
+
+```shell
+$ write-good *.md
+
+In README.md
+=============
+ = writeGood('So the cat was stolen.');
+                         ^^^^^^^^^^
+"was stolen" is passive voice on line 20 at column 40
+-------------
+//   suggestion: "'was stolen' is passive voice",
+                   ^^^^^^^^^^
+"was stolen" is passive voice on line 28 at column 19
+```
+
+
 ## Checks
 
 You can disable any combination of the following by providing a key with value `false` as the second argument to `writeGood`.
