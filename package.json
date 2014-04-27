@@ -1,6 +1,6 @@
 {
   "name": "write-good",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Naive linter for English prose",
   "main": "write-good.js",
   "bin": {
