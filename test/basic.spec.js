@@ -3,14 +3,14 @@ var writeGood = require('../write-good');
 describe('writeGood', function () {
   it('should detect weasel words', function () {
     expect(writeGood('Remarkably few developers write well.')).toEqual([
-      { index: 0, offset: 10, reason: '"Remarkably" is a weasel word' },
-      { index: 11, offset: 3, reason: '"few" is a weasel word' }
+      { index: 0, offset: 10, reason: '"Remarkably" есть слово горностай' },
+      { index: 11, offset: 3, reason: '"few" есть слово горностай' }
     ]);
   });
 
   it('should detect passive voice', function () {
     expect(writeGood('The script was killed')).toEqual([
-      { index: 11, offset: 10, reason: '"was killed" is passive voice' }
+      { index: 11, offset: 10, reason: '"was killed" есть пассивный звук' }
     ]);
   });
 
@@ -20,7 +20,7 @@ describe('writeGood', function () {
 
   it('should detect lexical illusions', function () {
     expect(writeGood('the the')).toEqual([
-      { index: 4, offset: 3, reason: '"the" is repeated' }
+      { index: 4, offset: 3, reason: '"the" есть повтор' }
     ]);
   });
 
@@ -30,13 +30,13 @@ describe('writeGood', function () {
 
   it('should detect lexical illusions with line breaks', function () {
     expect(writeGood('the\nthe')).toEqual([
-      { index: 4, offset: 3, reason: '"the" is repeated' }
+      { index: 4, offset: 3, reason: '"the" есть повтор' }
     ]);
   });
 
   it('should detect lexical illusions with case insensitivity', function () {
     expect(writeGood('The the')).toEqual([
-      { index: 4, offset: 3, reason: '"the" is repeated' }
+      { index: 4, offset: 3, reason: '"the" есть повтор' }
     ]);
   });
 
@@ -46,7 +46,7 @@ describe('writeGood', function () {
 
   it('should detect sentences that start with "so"', function () {
     expect(writeGood('So the best thing to do is wait.')).toEqual([
-      { index: 0, offset: 2, reason: '"So" adds no meaning' }
+      { index: 0, offset: 2, reason: '"So" добавляет нет значения' }
     ]);
   });
 
@@ -64,14 +64,14 @@ describe('writeGood', function () {
 
   it('should detect clauses after a semicolon that start with "so"', function () {
     expect(writeGood('This is a test; so it should pass or fail.')).toEqual([
-      { index: 16, offset: 2, reason: '"so" adds no meaning' }
+      { index: 16, offset: 2, reason: '"so" добавляет нет значения' }
     ]);
   });
 
   it('should order suggestions by index', function () {
     expect(writeGood('It has been said that few developers write well.')).toEqual([
-      { index: 7, offset: 9, reason: '"been said" is passive voice' },
-      { index: 22, offset: 3, reason: '"few" is a weasel word' }
+      { index: 7, offset: 9, reason: '"been said" есть пассивный звук' },
+      { index: 22, offset: 3, reason: '"few" есть слово горностай' }
     ]);
   });
 });
@@ -87,11 +87,11 @@ describe('annotate', function () {
     expect(annotations[0]).toBe(
       'Remarkably few developers write well.\n' +
       '^^^^^^^^^^\n' +
-      '"Remarkably" is a weasel word on line 1 at column 0');
+      '"Remarkably" есть слово горностай on line 1 at column 0');
 
     expect(annotations[1]).toBe(
       'Remarkably few developers write well.\n' +
       '           ^^^\n' +
-      '"few" is a weasel word on line 1 at column 11');
+      '"few" есть слово горностай on line 1 at column 11');
   });
 });
