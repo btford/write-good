@@ -62,6 +62,11 @@ describe('writeGood', function () {
     expect(writeGood('This changes the code so that it works.')).toEqual([]);
   });
 
+  it('should not detect words starting with "so"', function () {
+    expect(writeGood('Some silly sausages start sentences simply stating so.')).toEqual([]);
+    expect(writeGood('Sorry, everyone.')).toEqual([]);
+  });
+
   it('should detect clauses after a semicolon that start with "so"', function () {
     expect(writeGood('This is a test; so it should pass or fail.')).toEqual([
       { index: 16, offset: 2, reason: '"so" adds no meaning' }
