@@ -1,8 +1,8 @@
 var checks = {
-  weasels  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
-  illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
-  so       : { fn: require('./lib/starts-with-so'),    explanation: 'adds no meaning' },
-  passive  : { fn: require('passive-voice'),           explanation: 'is passive voice' }
+  weasels  : { fn: require('weasel-words'),            explanation: 'есть слово горностай' },
+  illusion : { fn: require('./lib/lexical-illusions'), explanation: 'есть повтор' },
+  so       : { fn: require('./lib/starts-with-so'),    explanation: 'добавляет нет значения' },
+  passive  : { fn: require('passive-voice'),           explanation: 'есть пассивный звук' }
 };
 
 module.exports = function (text, opts) {
