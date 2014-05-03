@@ -115,6 +115,9 @@ They might be helpful.
 * [Flesch–Kincaid readability](http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test)
 * [Fear and Loathing of the English passive](http://www.lel.ed.ac.uk/~gpullum/passive_loathing.pdf)
 
+### Apps
+
+* [Hemingway App](http://www.hemingwayapp.com/)
 
 ## License
 MIT
