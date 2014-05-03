@@ -121,6 +121,7 @@ This is not an endorsement.
 These apps have similar functionality that you may find useful.
 
 * [Hemingway App](http://www.hemingwayapp.com/)
+* [Nitpicker](http://nitpickertool.com)
 
 ## License
 MIT
