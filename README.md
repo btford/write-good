@@ -117,6 +117,9 @@ They might be helpful.
 
 ### Apps
 
+This is not an endorsement.
+These apps have similar functionality that you may find useful.
+
 * [Hemingway App](http://www.hemingwayapp.com/)
 
 ## License
