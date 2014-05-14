@@ -79,6 +79,10 @@ describe('writeGood', function () {
       { index: 22, offset: 3, reason: '"few" is a weasel word' }
     ]);
   });
+
+  it('should have no suggestions for an empty string', function () {
+    expect(writeGood('')).toEqual([]);
+  });
 });
 
 describe('annotate', function () {
