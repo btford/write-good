@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "passive-voice": "~0.0.0",
-    "weasel-words": "~0.0.0",
-    "glob": "^3.2.9"
+    "weasel-words": "~0.0.0"
   }
 }
