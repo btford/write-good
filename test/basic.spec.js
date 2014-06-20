@@ -79,7 +79,7 @@ describe('writeGood', function () {
     ]);
   });
 
-  it('should detect sentences starting with "there is"', function () {
+  it('should detect sentences starting with "there are"', function () {
     expect(writeGood('There are uses for this construction.')).toEqual([
       { index: 0, offset: 9, reason: '"There are" is unnecessary verbiage' }
     ]);
