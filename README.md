@@ -92,6 +92,9 @@ Checks for lexical illusions – cases where a word is repeated.
 ### `so`
 Checks for `so` at the beginning of the sentence.
 
+## `thereIs`
+Checks for `there is` or `there are` at the beginning of the sentence.
+
 ### `weasel`
 Checks for "weasel words."
 

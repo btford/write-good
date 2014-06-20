@@ -73,6 +73,18 @@ describe('writeGood', function () {
     ]);
   });
 
+  it('should detect sentences starting with "there is"', function () {
+    expect(writeGood('There is a use for this construction.')).toEqual([
+      { index: 0, offset: 8, reason: '"There is" is unnecessary verbiage' }
+    ]);
+  });
+
+  it('should detect sentences starting with "there is"', function () {
+    expect(writeGood('There are uses for this construction.')).toEqual([
+      { index: 0, offset: 9, reason: '"There are" is unnecessary verbiage' }
+    ]);
+  });
+
   it('should order suggestions by index', function () {
     expect(writeGood('It has been said that few developers write well.')).toEqual([
       { index: 7, offset: 9, reason: '"been said" is passive voice' },
