@@ -9,6 +9,8 @@ Naive linter for English prose for developers who can't write good and wanna do 
 npm install write-good
 ```
 
+**Important:** Do not use this tool to be a jerk to other people about their writing.
+
 
 ## API
 
