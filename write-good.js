@@ -29,19 +29,20 @@ module.exports = function (text, opts) {
       return suggestion;
     };
   }
-
-  function dedup (suggestions) {
-    var dupsHash = {}
-
-    return suggestions.reduce(function(memo, suggestion) {
-      var key = suggestion.index + ":" + suggestion.offset;
-      if (!dupsHash[key]) {
-        dupsHash[key] = true;
-        memo.push(suggestion);
-      }
-      return memo;
-    }, []);
-  }
 };
+
+
+function dedup (suggestions) {
+  var dupsHash = {};
+
+  return suggestions.reduce(function(memo, suggestion) {
+    var key = suggestion.index + ":" + suggestion.offset;
+    if (!dupsHash[key]) {
+      dupsHash[key] = true;
+      memo.push(suggestion);
+    }
+    return memo;
+  }, []);
+}
 
 module.exports.annotate = require('./lib/annotate');
