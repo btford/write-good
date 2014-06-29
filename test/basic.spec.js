@@ -63,7 +63,7 @@ describe('writeGood', function () {
   });
 
   it('should not detect words starting with "so"', function () {
-    expect(writeGood('Some silly sausages start sentences simply stating so.')).toEqual([]);
+    expect(writeGood('Some silly sausages start sentences stating so.')).toEqual([]);
     expect(writeGood('Sorry, everyone.')).toEqual([]);
   });
 
@@ -82,6 +82,18 @@ describe('writeGood', function () {
   it('should detect sentences starting with "there are"', function () {
     expect(writeGood('There are uses for this construction.')).toEqual([
       { index: 0, offset: 9, reason: '"There are" is unnecessary verbiage' }
+    ]);
+  });
+
+  it('should detect sentences with common adverbs', function() {
+    expect(writeGood('This sentence is simply terrible')).toEqual([
+      { index: 17, offset: 6, reason: '"simply" can weaken meaning' }
+    ])
+  });
+
+  it('should fail validation once for terms that trigger multiple suggestions', function() {
+    expect(writeGood('This sentence is extremely good.')).toEqual([
+      { index : 17, offset : 9, reason : '"extremely" is a weasel word' }
     ]);
   });
 

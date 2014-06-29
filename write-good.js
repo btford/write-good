@@ -3,7 +3,8 @@ var checks = {
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
   so       : { fn: require('./lib/starts-with-so'),    explanation: 'adds no meaning' },
   thereIs  : { fn: require('./lib/there-is'),          explanation: 'is unnecessary verbiage' },
-  passive  : { fn: require('passive-voice'),           explanation: 'is passive voice' }
+  passive  : { fn: require('passive-voice'),           explanation: 'is passive voice' },
+  adverb   : { fn: require('adverb-where'),            explanation: 'can weaken meaning'},
 };
 
 module.exports = function (text, opts) {
@@ -16,7 +17,7 @@ module.exports = function (text, opts) {
     }
   });
 
-  return suggestions.sort(function (a, b) {
+  return dedup(suggestions).sort(function (a, b) {
     return a.index < b.index ? -1 : 1;
   });
 
@@ -27,6 +28,19 @@ module.exports = function (text, opts) {
           '" ' + reason;
       return suggestion;
     };
+  }
+
+  function dedup (suggestions) {
+    var dupsHash = {}
+
+    return suggestions.reduce(function(memo, suggestion) {
+      var key = suggestion.index + ":" + suggestion.offset;
+      if (!dupsHash[key]) {
+        dupsHash[key] = true;
+        memo.push(suggestion);
+      }
+      return memo;
+    }, []);
   }
 };
 
