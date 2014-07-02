@@ -3,7 +3,7 @@ var writeGood = require('../write-good');
 describe('writeGood', function () {
   it('should detect weasel words', function () {
     expect(writeGood('Remarkably few developers write well.')).toEqual([
-      { index: 0, offset: 10, reason: '"Remarkably" is a weasel word' },
+      { index: 0, offset: 10, reason: '"Remarkably" is a weasel word and can weaken meaning' },
       { index: 11, offset: 3, reason: '"few" is a weasel word' }
     ]);
   });
@@ -93,7 +93,7 @@ describe('writeGood', function () {
 
   it('should fail validation once for terms that trigger multiple suggestions', function() {
     expect(writeGood('This sentence is extremely good.')).toEqual([
-      { index : 17, offset : 9, reason : '"extremely" is a weasel word' }
+      { index: 17, offset: 9, reason: '"extremely" is a weasel word and can weaken meaning' }
     ]);
   });
 
@@ -120,7 +120,7 @@ describe('annotate', function () {
     expect(annotations[0]).toBe(
       'Remarkably few developers write well.\n' +
       '^^^^^^^^^^\n' +
-      '"Remarkably" is a weasel word on line 1 at column 0');
+      '"Remarkably" is a weasel word and can weaken meaning on line 1 at column 0');
 
     expect(annotations[1]).toBe(
       'Remarkably few developers write well.\n' +
