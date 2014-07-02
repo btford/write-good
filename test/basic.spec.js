@@ -93,7 +93,7 @@ describe('writeGood', function () {
 
   it('should fail validation once for terms that trigger multiple suggestions', function() {
     expect(writeGood('This sentence is extremely good.')).toEqual([
-      { index : 17, offset : 9, reason : '"extremely" is a weasel word' }
+      { index: 17, offset: 9, reason: '"extremely" is a weasel word' }
     ]);
   });
 
@@ -101,6 +101,18 @@ describe('writeGood', function () {
     expect(writeGood('It has been said that few developers write well.')).toEqual([
       { index: 7, offset: 9, reason: '"been said" is passive voice' },
       { index: 22, offset: 3, reason: '"few" is a weasel word' }
+    ]);
+  });
+
+  it('should detect wordy phrases', function() {
+    expect(writeGood('As a matter of fact, this sentence could be simpler.')).toEqual([
+      { index: 0, offset: 19, reason: '"As a matter of fact" is wordy or unneeded' }
+    ]);
+  });
+
+  it('should detect complex words', function() {
+    expect(writeGood('Your readers will be adversely impacted by this sentence.')).toEqual([
+      { index: 31, offset: 8, reason: '"impacted" is wordy or unneeded' }
     ]);
   });
 
