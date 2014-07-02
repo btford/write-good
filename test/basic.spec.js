@@ -104,6 +104,18 @@ describe('writeGood', function () {
     ]);
   });
 
+  it('should detect wordy phrases', function() {
+    expect(writeGood('As a matter of fact, this sentence could be simpler.')).toEqual([
+      { index: 0, offset: 19, reason: '"As a matter of fact" is wordy or unneeded' }
+    ]);
+  });
+
+  it('should detect complex words', function() {
+    expect(writeGood('Your readers will be adversely impacted by this sentence.')).toEqual([
+      { index: 31, offset: 8, reason: '"impacted" is wordy or unneeded' }
+    ]);
+  });
+
   it('should have no suggestions for an empty string', function () {
     expect(writeGood('')).toEqual([]);
   });
