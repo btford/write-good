@@ -38,8 +38,10 @@ function dedup (suggestions) {
   return suggestions.reduce(function(memo, suggestion) {
     var key = suggestion.index + ":" + suggestion.offset;
     if (!dupsHash[key]) {
-      dupsHash[key] = true;
+      dupsHash[key] = suggestion;
       memo.push(suggestion);
+    } else {
+      dupsHash[key].reason += " and " + suggestion.reason.substring(suggestion.offset + 3);
     }
     return memo;
   }, []);
