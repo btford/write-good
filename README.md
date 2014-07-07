@@ -100,6 +100,9 @@ Checks for `there is` or `there are` at the beginning of the sentence.
 ### `weasel`
 Checks for "weasel words."
 
+### `adverb`
+Checks for adverbs that can weaken meaning: really, very, extremely, etc.
+
 
 ## See also
 
