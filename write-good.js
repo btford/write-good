@@ -5,7 +5,7 @@ var checks = {
   thereIs  : { fn: require('./lib/there-is'),          explanation: 'is unnecessary verbiage' },
   passive  : { fn: require('passive-voice'),           explanation: 'is passive voice' },
   adverb   : { fn: require('adverb-where'),            explanation: 'can weaken meaning'},
-  complex  : { fn: require('too-wordy'),               explanation: 'is wordy or unneeded'},
+  tooWordy : { fn: require('too-wordy'),               explanation: 'is wordy or unneeded'},
 };
 
 module.exports = function (text, opts) {
