@@ -3,6 +3,10 @@
   "version": "0.6.0",
   "description": "Naive linter for English prose",
   "main": "write-good.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btford/write-good.git"
+  },
   "bin": {
     "write-good": "bin/write-good.js"
   },
