@@ -116,6 +116,12 @@ describe('writeGood', function () {
     ]);
   });
 
+  it('should detect common cliches', function() {
+    expect(writeGood('Writing specs puts me at loose ends.')).toEqual([
+      { index: 22, offset: 13, reason: '"at loose ends" is a cliche' }
+    ]);
+  });
+
   it('should have no suggestions for an empty string', function () {
     expect(writeGood('')).toEqual([]);
   });
