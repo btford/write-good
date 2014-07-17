@@ -103,6 +103,8 @@ Checks for "weasel words."
 ### `adverb`
 Checks for adverbs that can weaken meaning: really, very, extremely, etc.
 
+### `tooWordy`
+Checks for wordy phrases and unnecessary words
 
 ## See also
 
