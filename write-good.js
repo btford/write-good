@@ -6,6 +6,7 @@ var checks = {
   passive  : { fn: require('passive-voice'),           explanation: 'is passive voice' },
   adverb   : { fn: require('adverb-where'),            explanation: 'can weaken meaning'},
   tooWordy : { fn: require('too-wordy'),               explanation: 'is wordy or unneeded'},
+  cliches  : { fn: require('no-cliches'),              explanation: 'is a cliche'},
 };
 
 module.exports = function (text, opts) {
