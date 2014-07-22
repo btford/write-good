@@ -121,6 +121,7 @@ They might be helpful.
 * [writegood mode](https://github.com/bnbeckwith/writegood-mode) for emacs
 * [natural](https://github.com/NaturalNode/natural) – general purpose NLP toolkit in JavaScript
 * [WordNet](http://wordnet.princeton.edu/) – lexical database of the English language
+* [LanguageTool](https://languagetool.org/) – style and grammar checker implemented in Java
 
 ### Prose
 
