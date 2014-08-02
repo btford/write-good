@@ -125,6 +125,18 @@ describe('writeGood', function () {
   it('should have no suggestions for an empty string', function () {
     expect(writeGood('')).toEqual([]);
   });
+
+  it('should handle leading newlines on "so" detection.', function () {
+    expect(writeGood('\n\nSo adds no meaning.')).toEqual([
+      { index: 2, offset: 2, reason: '"So" adds no meaning' }
+    ]);
+  });
+
+  it('should handle leading newlines on "there is" detection.', function () {
+    expect(writeGood('\n\nthere is unnecessary verbiage.')).toEqual([
+      { index: 2, offset: 8, reason: '"there is" is unnecessary verbiage' }
+    ]);
+  });
 });
 
 describe('annotate', function () {
