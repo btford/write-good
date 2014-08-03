@@ -46,7 +46,7 @@ describe('writeGood', function () {
 
   it('should ignore headings and produce the correct errors', function () {
     expect(writeGood('# Abstract\n##Sub heading\nSo the best thing to do is wait.')).toEqual([
-        { index: 0, offset: 2, reason: '"So" adds no meaning' }
+        { index: 2, offset: 2, reason: '"So" adds no meaning' }
       ]);
   });
 

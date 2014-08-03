@@ -12,8 +12,7 @@ var checks = {
 module.exports = function (text, opts) {
   var headingsRe = /^#.*/gm;
   var headings = text.match(headingsRe);
-  // remove the extra whitespaces
-  text = text.replace(headingsRe, '').replace(/^\s*[\r\n]/, '');
+  text = text.replace(headingsRe, '');
   opts = opts || {};
   var suggestions = [];
   Object.keys(checks).forEach(function (checkName) {
