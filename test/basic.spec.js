@@ -44,6 +44,12 @@ describe('writeGood', function () {
     expect(writeGood('// //')).toEqual([]);
   });
 
+  it('should ignore headings and produce the correct errors', function () {
+    expect(writeGood('# Abstract\n##Sub heading\nSo the best thing to do is wait.')).toEqual([
+        { index: 2, offset: 2, reason: '"So" adds no meaning' }
+      ]);
+  });
+
   it('should detect sentences that start with "so"', function () {
     expect(writeGood('So the best thing to do is wait.')).toEqual([
       { index: 0, offset: 2, reason: '"So" adds no meaning' }
