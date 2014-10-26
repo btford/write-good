@@ -15,10 +15,14 @@ if (files.length === 0) {
 }
 
 var opts      = {
+  weasel   : null,
   illusion : null,
-  passive  : null,
   so       : null,
-  weasel   : null
+  thereIs  : null,
+  passive  : null,
+  adverb   : null,
+  tooWordy : null,
+  cliches  : null
 };
 
 var include = true;
@@ -42,14 +46,16 @@ Object.keys(opts).forEach(function (name) {
   }
 });
 
+var hasSuggestions = false;
 files.forEach(function (file) {
   var contents = fs.readFileSync(file, 'utf8');
   var suggestions = writeGood(contents, opts);
 
   if (suggestions.length) {
+    hasSuggestions = true;
     console.log('In ' + file);
     console.log('=============');
     console.log(annotate(contents, suggestions).join('\n-------------\n'));
   }
 });
-
+process.exit(hasSuggestions);
