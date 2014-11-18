@@ -42,10 +42,12 @@ Object.keys(opts).forEach(function (name) {
   }
 });
 
+var exitCode = 0;
 files.forEach(function (file) {
   var contents = fs.readFileSync(file, 'utf8');
   var suggestions = writeGood(contents, opts);
 
+  exitCode += suggestions.length;
   if (suggestions.length) {
     console.log('In ' + file);
     console.log('=============');
@@ -53,3 +55,4 @@ files.forEach(function (file) {
   }
 });
 
+process.exit(exitCode);
