@@ -25,7 +25,7 @@
   "author": "Brian Ford",
   "license": "MIT",
   "devDependencies": {
-    "jasmine-node": "git://github.com/btford/jasmine-node"
+    "jasmine-node": "2.0.0"
   },
   "dependencies": {
     "passive-voice": "~0.0.0",
