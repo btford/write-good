@@ -15,10 +15,14 @@ if (files.length === 0) {
 }
 
 var opts      = {
+  weasel   : null,
   illusion : null,
-  passive  : null,
   so       : null,
-  weasel   : null
+  thereIs  : null,
+  passive  : null,
+  adverb   : null,
+  tooWordy : null,
+  cliches  : null
 };
 
 var include = true;

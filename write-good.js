@@ -1,5 +1,5 @@
 var checks = {
-  weasels  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
+  weasel  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
   so       : { fn: require('./lib/starts-with-so'),    explanation: 'adds no meaning' },
   thereIs  : { fn: require('./lib/there-is'),          explanation: 'is unnecessary verbiage' },
