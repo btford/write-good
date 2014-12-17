@@ -9,6 +9,12 @@ var files     = args.filter(function (arg) {
   return arg.substr(0, 2) !== '--';
 });
 
+if (args[0] === '--version'){
+  var version = require('../package.json').version;
+  console.log('write-good version ' + version);
+  process.exit(0);
+}
+
 if (files.length === 0) {
   console.log('You did not provide any files to check');
   process.exit(1);
