@@ -3,7 +3,7 @@ var checks = {
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
   so       : { fn: require('./lib/starts-with-so'),    explanation: 'adds no meaning' },
   thereIs  : { fn: require('./lib/there-is'),          explanation: 'is unnecessary verbiage' },
-  passive  : { fn: require('passive-voice'),           explanation: 'is passive voice' },
+  passive  : { fn: require('passive-voice'),           explanation: 'may be passive voice' },
   adverb   : { fn: require('adverb-where'),            explanation: 'can weaken meaning'},
   tooWordy : { fn: require('too-wordy'),               explanation: 'is wordy or unneeded'},
   cliches  : { fn: require('no-cliches'),              explanation: 'is a cliche'},
