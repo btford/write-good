@@ -137,6 +137,13 @@ describe('writeGood', function () {
       { index: 2, offset: 8, reason: '"there is" is unnecessary verbiage' }
     ]);
   });
+
+  it('should detect frankenwords.', function () {
+    exprect(writeGood('Backronym is a word that should not be used.')).toEqual([
+      { index: 1, offset: 0, reason: 'is a frankenword' }
+    ]);
+  });
+
 });
 
 describe('annotate', function () {
