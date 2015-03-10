@@ -28,10 +28,11 @@
     "jasmine-node": "2.0.0"
   },
   "dependencies": {
-    "passive-voice": "~0.0.0",
-    "weasel-words": "~0.1.0",
     "adverb-where": "~0.0.0",
+    "frankenword": "0.0.1",
+    "no-cliches": "~0.1.0",
+    "passive-voice": "~0.0.0",
     "too-wordy": "~0.1.0",
-    "no-cliches": "~0.1.0"
+    "weasel-words": "~0.1.0"
   }
 }
