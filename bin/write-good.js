@@ -28,7 +28,8 @@ var opts      = {
   passive  : null,
   adverb   : null,
   tooWordy : null,
-  cliches  : null
+  cliches  : null,
+  frankenword : null
 };
 
 var include = true;
