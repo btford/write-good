@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "adverb-where": "~0.0.0",
-    "frankenword": "0.0.1",
+    "frankenword": "~0.0.2",
     "no-cliches": "~0.1.0",
     "passive-voice": "~0.0.0",
     "too-wordy": "~0.1.0",
