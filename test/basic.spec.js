@@ -139,7 +139,7 @@ describe('writeGood', function () {
   });
 
   it('should detect frankenwords.', function () {
-    exprect(writeGood('Backronym is a word that should not be used.')).toEqual([
+    expect(writeGood('Backronym is a word that should not be used.')).toEqual([
       { index: 1, offset: 0, reason: 'is a frankenword' }
     ]);
   });
