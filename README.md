@@ -104,10 +104,10 @@ Checks for "weasel words."
 Checks for adverbs that can weaken meaning: really, very, extremely, etc.
 
 ### `tooWordy`
-Checks for wordy phrases and unnecessary words
+Checks for wordy phrases and unnecessary words.
 
 ### `cliches`
-Checks for common cliches
+Checks for common cliches.
 
 ## See also
 
