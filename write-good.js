@@ -7,6 +7,7 @@ var checks = {
   adverb   : { fn: require('adverb-where'),            explanation: 'can weaken meaning'},
   tooWordy : { fn: require('too-wordy'),               explanation: 'is wordy or unneeded'},
   cliches  : { fn: require('no-cliches'),              explanation: 'is a cliche'},
+  frankenword : { fn: require('frankenword'),		explanation: 'is a frankenword'},
 };
 
 module.exports = function (text, opts) {
