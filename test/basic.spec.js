@@ -10,7 +10,7 @@ describe('writeGood', function () {
 
   it('should detect passive voice', function () {
     expect(writeGood('The script was killed')).toEqual([
-      { index: 11, offset: 10, reason: '"was killed" is passive voice' }
+      { index: 11, offset: 10, reason: '"was killed" may be passive voice' }
     ]);
   });
 
@@ -99,7 +99,7 @@ describe('writeGood', function () {
 
   it('should order suggestions by index', function () {
     expect(writeGood('It has been said that few developers write well.')).toEqual([
-      { index: 7, offset: 9, reason: '"been said" is passive voice' },
+      { index: 7, offset: 9, reason: '"been said" may be passive voice' },
       { index: 22, offset: 3, reason: '"few" is a weasel word' }
     ]);
   });
