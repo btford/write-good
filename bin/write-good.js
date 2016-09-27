@@ -32,6 +32,7 @@ var opts      = {
 };
 
 var include = true;
+var shouldParse = false;
 
 args.filter(function (arg) {
   return arg.substr(0, 2) === '--';
@@ -40,7 +41,12 @@ args.filter(function (arg) {
 }).forEach(function (arg) {
   if (arg.substr(0, 3) === 'no-') {
     opts[arg.substr(3)] = false;
-  } else {
+  } else if(arg == 'parse') {
+  //overload the lint option logic above, to include
+  //an operational flag: --parse, which means parse-happy output
+  //and follow a more conventional Unix exit code
+    shouldParse = true;
+  }else {
     opts[arg] = true;
     include = false;
   }
@@ -57,11 +63,16 @@ files.forEach(function (file) {
   var contents = fs.readFileSync(file, 'utf8');
   var suggestions = writeGood(contents, opts);
 
-  exitCode += suggestions.length;
-  if (suggestions.length) {
-    console.log('In ' + file);
-    console.log('=============');
-    console.log(annotate(contents, suggestions).join('\n-------------\n'));
+  if(shouldParse){
+    exitCode = suggestions.length > 0 ? -1 : 0;
+    console.log(annotate(contents, suggestions, true).map(function(ann){return [file,ann.line,ann.col, ann.reason].join(":")}).join("\n"));
+  }else{
+    exitCode += suggestions.length;
+    if (suggestions.length) {
+      console.log('In ' + file);
+      console.log('=============');
+      console.log(annotate(contents, suggestions).join('\n-------------\n'));
+    }
   }
 });
 
