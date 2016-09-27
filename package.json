@@ -8,7 +8,8 @@
     "url": "https://github.com/btford/write-good.git"
   },
   "bin": {
-    "write-good": "bin/write-good.js"
+    "write-good": "bin/write-good.js",
+    "writegood": "bin/write-good.js"
   },
   "directories": {
     "test": "test"
