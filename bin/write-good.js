@@ -42,13 +42,26 @@ args.filter(function (arg) {
   if (arg.substr(0, 3) === 'no-') {
     opts[arg.substr(3)] = false;
   } else if(arg == 'parse') {
-  //overload the lint option logic above, to include
-  //an operational flag: --parse, which means parse-happy output
-  //and follow a more conventional Unix exit code
+    //overload the lint option logic above, to include
+    //an operational flag: --parse, which means parse-happy output
+    //and follow a more conventional Unix exit code
     shouldParse = true;
   }else {
-    opts[arg] = true;
-    include = false;
+    if(typeof(opts[arg]) !== 'undefined') {
+      opts[arg] = true;
+      include = false;
+    } else {
+      var closestWord = require('../lib/closest-word.js');
+      var suggestion = closestWord.closestIndex(arg, opts);
+
+      console.log('"' + arg + '" is not a valid option.');
+
+      if(suggestion) {
+        console.log('Did you mean "' + suggestion + '?"');
+      }
+
+      process.exit(1);
+    }
   }
 });
 
