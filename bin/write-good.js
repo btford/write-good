@@ -65,7 +65,7 @@ files.forEach(function (file) {
 
   if(shouldParse){
     exitCode = suggestions.length > 0 ? -1 : 0;
-    console.log(annotate(contents, suggestions, true).map(function(ann){return [file,ann.line,ann.col, ann.reason].join(":")}).join("\n"));
+    console.log(annotate(contents, suggestions, true).map(function(ann){return [file,ann.line,ann.col, ann.reason.replace("\n", " ")].join(":")}).join("\n"));
   }else{
     exitCode += suggestions.length;
     if (suggestions.length) {
