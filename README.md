@@ -107,7 +107,7 @@ See [«“Weasel word” — English Wikipedia article»](https://en.wikipedia.o
 
 ### `adverb`
 Checks for adverbs that can weaken meaning: really, very, extremely, etc.  
-See [«Pretty, fairly, really, very, and quit»](http://www.learnersdictionary.com/qa/pretty-fairly-really-very-and-quite).
+See [«Pretty, fairly, really, very, and quite»](http://www.learnersdictionary.com/qa/pretty-fairly-really-very-and-quite).
 
 ### `tooWordy`
 Checks for wordy phrases and unnecessary words.  
