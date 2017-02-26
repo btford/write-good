@@ -20,16 +20,34 @@ if (files.length === 0) {
   process.exit(1);
 }
 
-var opts      = {
-  weasel   : null,
-  illusion : null,
-  so       : null,
-  thereIs  : null,
-  passive  : null,
-  adverb   : null,
-  tooWordy : null,
-  cliches  : null
-};
+//set custom ops, i.e. to lint a non-English document
+var optsArg = args.find(function (arg) {
+    return arg.startsWith('--checks');
+});
+
+var checksModule = optsArg ? optsArg.replace('--checks=', '') : undefined;
+
+var checks;
+var opts;
+if (!checksModule) {
+  opts = {
+    weasel   : null,
+    illusion : null,
+    so       : null,
+    thereIs  : null,
+    passive  : null,
+    adverb   : null,
+    tooWordy : null,
+    cliches  : null
+  };
+} else {
+  checks = require(checksModule);
+  opts = {};
+  Object.keys(checksModule).forEach(function (name) {
+    opts[name] = null;
+  });
+}
+
 
 var include = true;
 var shouldParse = false;
@@ -61,7 +79,7 @@ Object.keys(opts).forEach(function (name) {
 var exitCode = 0;
 files.forEach(function (file) {
   var contents = fs.readFileSync(file, 'utf8');
-  var suggestions = writeGood(contents, opts);
+  var suggestions = writeGood(contents, opts, checks);
 
   if(shouldParse){
     exitCode = suggestions.length > 0 ? -1 : 0;

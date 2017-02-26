@@ -1,4 +1,4 @@
-var checks = {
+var defaultChecks = {
   weasel  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
   so       : { fn: require('./lib/starts-with-so'),    explanation: 'adds no meaning' },
@@ -9,13 +9,17 @@ var checks = {
   cliches  : { fn: require('no-cliches'),              explanation: 'is a cliche'},
 };
 
-module.exports = function (text, opts) {
-  opts = opts || {};
+module.exports = function (text, opts, checks) {
+  //overload opts
+  var optsType = opts ? typeof opts[Object.keys(opts)[0]] : undefined;
+  var finalOpts = optsType === 'boolean' ? opts : {};
+  var finalChecks = optsType === 'object' ? opts : checks || defaultChecks;
+
   var suggestions = [];
-  Object.keys(checks).forEach(function (checkName) {
-    if (opts[checkName] !== false) {
-      suggestions = suggestions.concat(checks[checkName].fn(text).
-                          map(reasonable(checks[checkName].explanation)));
+  Object.keys(finalChecks).forEach(function (checkName) {
+    if (finalOpts[checkName] !== false) {
+      suggestions = suggestions.concat(finalChecks[checkName].fn(text).
+                          map(reasonable(finalChecks[checkName].explanation)));
     }
   });
 
