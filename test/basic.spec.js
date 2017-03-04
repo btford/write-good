@@ -148,13 +148,43 @@ describe('annotate', function () {
     var annotations = annotate(text, suggestions);
 
     expect(annotations[0]).toBe(
-      'Remarkably few developers write well.\n' +
-      '^^^^^^^^^^\n' +
-      '"Remarkably" is a weasel word and can weaken meaning on line 1 at column 0');
+        'Remarkably few developers write well.\n' +
+        '^^^^^^^^^^\n' +
+        '"Remarkably" is a weasel word and can weaken meaning on line 1 at column 0');
 
     expect(annotations[1]).toBe(
-      'Remarkably few developers write well.\n' +
-      '           ^^^\n' +
-      '"few" is a weasel word on line 1 at column 11');
+        'Remarkably few developers write well.\n' +
+        '           ^^^\n' +
+        '"few" is a weasel word on line 1 at column 11');
+  });
+});
+
+describe('closestWord', function() {
+  var closestWord = require('../lib/closest-word.js');
+
+  it('should suggest close words from a list', function () {
+    var text = 'pasive';
+    var options = ['weasel', 'illusion', 'so', 'thereIs', 'passive', 'adverb', 'tooWordy', 'cliches'];
+    var suggestion = closestWord(text, options);
+
+    expect(suggestion).toBe('passive');
+  });
+
+  it('should suggest close words from an object', function() {
+    var text = 'pasive';
+    var options = {
+      weasel   : null,
+      illusion : null,
+      so       : null,
+      thereIs  : null,
+      passive  : null,
+      adverb   : null,
+      tooWordy : null,
+      cliches  : null
+    };
+
+    var suggestion = closestWord.closestIndex(text, options);
+
+    expect(suggestion).toBe('passive');
   });
 });
