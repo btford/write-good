@@ -86,6 +86,13 @@ You can run just with text without supplying files:
 write-good --text="It should have been defined there."
 ```
 
+You can even supply multi-line text:
+
+```shell
+write-good --text="I can't see a problem there that's not been defined yet.
+Should be defined again."
+```
+
 You can also pass other arguments:
 
 ```shell
