@@ -80,6 +80,17 @@ Or exclude checks like this:
 write-good *.md --no-passive
 ```
 
+You can run just with text without supplying files:
+
+```shell
+write-good --text="It should have been defined there."
+```
+
+You can also pass other arguments:
+
+```shell
+write-good --text="It should have been defined there." --no-passive
+```
 
 ## Checks
 
