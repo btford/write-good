@@ -99,6 +99,12 @@ You can also pass other arguments:
 write-good --text="It should have been defined there." --no-passive
 ```
 
+You can even fetch output from a remote file:
+
+```shell
+write-good --text="$(curl https://raw.githubusercontent.com/btford/write-good/master/README.md)"
+```
+
 ## Checks
 
 You can disable any combination of the following by providing a key with value `false` as the second argument to `writeGood`.
