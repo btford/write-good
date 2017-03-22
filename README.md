@@ -141,7 +141,7 @@ Checks for wordy phrases and unnecessary words.
 Checks for common cliches.
 
 ### `eprime`
-Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs.
+Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_ 
 
 ## See also
 
