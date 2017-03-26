@@ -21,14 +21,12 @@ if (files.length === 0) {
 }
 
 //set custom ops, i.e. to lint a non-English document
-var optsArg = args.find(function (arg) {
+var checksModule = args.find(function (arg) {
     return arg.startsWith('--checks');
-});
-
-var checksModule = optsArg ? optsArg.replace('--checks=', '') : undefined;
+}).replace('--checks=', '');
 
 var checks;
-var opts;
+var opts = {};
 if (!checksModule) {
   opts = {
     weasel   : null,
@@ -42,7 +40,6 @@ if (!checksModule) {
   };
 } else {
   checks = require(checksModule);
-  opts = {};
   Object.keys(checksModule).forEach(function (name) {
     opts[name] = null;
   });
