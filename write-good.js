@@ -9,11 +9,15 @@ var defaultChecks = {
   cliches  : { fn: require('no-cliches'),              explanation: 'is a cliche'},
 };
 
-module.exports = function (text, opts, checks) {
-  //overload opts
-  var optsType = opts ? typeof opts[Object.keys(opts)[0]] : undefined;
-  var finalOpts = optsType === 'boolean' ? opts : {};
-  var finalChecks = optsType === 'object' ? opts : checks || defaultChecks;
+module.exports = function (text, opts) {
+  opts = opts ? opts : {};
+  var finalOpts = {}
+  Object.keys(opts).map(function(optKey) {
+    if(optKey !== 'checks') {
+      finalOpts[optKey] = opts[optKey];
+    }
+  });
+  var finalChecks = opts.checks || defaultChecks;
 
   var suggestions = [];
   Object.keys(finalChecks).forEach(function (checkName) {

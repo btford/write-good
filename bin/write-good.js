@@ -39,10 +39,10 @@ if (!checksModule) {
     cliches  : null
   };
 } else {
-  checks = require(checksModule);
   Object.keys(checksModule).forEach(function (name) {
     opts[name] = null;
   });
+  opts.checks = require(checksModule)
 }
 
 
@@ -76,7 +76,7 @@ Object.keys(opts).forEach(function (name) {
 var exitCode = 0;
 files.forEach(function (file) {
   var contents = fs.readFileSync(file, 'utf8');
-  var suggestions = writeGood(contents, opts, checks);
+  var suggestions = writeGood(contents, opts);
 
   if(shouldParse){
     exitCode = suggestions.length > 0 ? -1 : 0;
