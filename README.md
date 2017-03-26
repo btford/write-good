@@ -92,6 +92,31 @@ Or exclude checks like this:
 write-good *.md --no-passive
 ```
 
+You can run just with text without supplying files:
+
+```shell
+write-good --text="It should have been defined there."
+```
+
+You can even supply multi-line text:
+
+```shell
+write-good --text="I can't see a problem there that's not been defined yet.
+Should be defined again."
+```
+
+You can also pass other arguments:
+
+```shell
+write-good --text="It should have been defined there." --no-passive
+```
+
+You can even fetch output from a remote file:
+
+```shell
+write-good --text="$(curl https://raw.githubusercontent.com/btford/write-good/master/README.md)"
+```
+
 To specify a custom checks extension, for example [schreib-gut](https://github.com/TimKam/schreib-gut) (experimental), run:
 
 ```shell
