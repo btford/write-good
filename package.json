@@ -29,6 +29,7 @@
     "jasmine-node": "2.0.0"
   },
   "dependencies": {
+    "object.assign": "^4.0.4",
     "passive-voice": "~0.0.0",
     "weasel-words": "~0.1.0",
     "adverb-where": "~0.0.0",
