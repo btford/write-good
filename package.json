@@ -29,11 +29,13 @@
     "jasmine-node": "2.0.0"
   },
   "dependencies": {
+    "object.assign": "^4.0.4",
     "passive-voice": "~0.0.0",
     "weasel-words": "~0.1.0",
     "adverb-where": "~0.0.0",
     "too-wordy": "~0.1.0",
-    "no-cliches": "~0.1.0"
+    "no-cliches": "~0.1.0",
+    "e-prime": "~0.10.0"
   },
   "coordinates": [
     45.522199,

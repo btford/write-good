@@ -137,6 +137,26 @@ describe('writeGood', function () {
       { index: 2, offset: 8, reason: '"there is" is unnecessary verbiage' }
     ]);
   });
+
+  it('should detect simple "to be" verb', function () {
+    expect(writeGood('NodeJs is awesome ;)', { eprime: true })).toEqual([
+      { index: 7, offset: 2, reason: '"is" is a form of \'to be\'' }
+    ]);
+  });
+
+  it('should ignore "to be" verb with check disabled', function () {
+    expect(writeGood('NodeJs is awesome ;)', { eprime: false })).toEqual([]);
+  });
+
+  it('should detect "to be" verb contraction', function () {
+    expect(writeGood('There\'s no place like localhost', { eprime: true })).toEqual([
+      { index: 0, offset: 7, reason: '"There\'s" is a form of \'to be\'' }
+    ]);
+  });
+
+  it('shouldn\'t flag words starting with "is" as an error', function () {
+    expect(writeGood('Isle of Man', { eprime: true })).toEqual([]);
+  });
 });
 
 describe('annotate', function () {

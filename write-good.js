@@ -1,3 +1,5 @@
+var assign = Object.assign || require('object.assign');
+
 var checks = {
   weasel  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
@@ -7,10 +9,16 @@ var checks = {
   adverb   : { fn: require('adverb-where'),            explanation: 'can weaken meaning'},
   tooWordy : { fn: require('too-wordy'),               explanation: 'is wordy or unneeded'},
   cliches  : { fn: require('no-cliches'),              explanation: 'is a cliche'},
+  eprime   : { fn: require('e-prime'),                 explanation: 'is a form of \'to be\''}
+};
+
+// User must explicitly opt-in
+var disabledChecks = {
+  eprime: false
 };
 
 module.exports = function (text, opts) {
-  opts = opts || {};
+  opts = assign({}, disabledChecks, opts);
   var suggestions = [];
   Object.keys(checks).forEach(function (checkName) {
     if (opts[checkName] !== false) {
