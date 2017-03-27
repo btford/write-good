@@ -1,3 +1,5 @@
+var assign = Object.assign || require('object.assign');
+
 var checks = {
   weasel  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
@@ -16,7 +18,7 @@ var disabledChecks = {
 };
 
 module.exports = function (text, opts) {
-  opts = Object.assign({}, disabledChecks, opts);
+  opts = assign({}, disabledChecks, opts);
   var suggestions = [];
   Object.keys(checks).forEach(function (checkName) {
     if (opts[checkName] !== false) {
