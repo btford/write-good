@@ -1,6 +1,6 @@
 # write good [![Build Status](https://travis-ci.org/btford/write-good.svg?branch=master)](https://travis-ci.org/btford/write-good)
 
-Naive linter for English prose for developers who can't write good and wanna learn to do other stuff good too.
+Naive linter for English prose for developers who can't write good and want to learn how to do other stuff good too.
 
 
 ## Use
@@ -141,7 +141,7 @@ Checks for wordy phrases and unnecessary words.
 Checks for common cliches.
 
 ### `eprime`
-Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_ 
+Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_
 
 ## See also
 
