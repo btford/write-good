@@ -20,11 +20,12 @@ if (files.length === 0) {
 }
 
 //set custom ops, i.e. to lint a non-English document
-var checksModule = args.find(function (arg) {
+var checksArg = args.find(function (arg) {
     return arg.startsWith('--checks');
-}).replace('--checks=', '');
+});
 
-var checks;
+var checksModule = checksArg ? checksArg.replace('--checks=', '') : undefined;
+
 var opts = {};
 if (!checksModule) {
   opts = {
@@ -38,10 +39,10 @@ if (!checksModule) {
     cliches  : null
   };
 } else {
-  Object.keys(checksModule).forEach(function (name) {
+  opts.checks = require(checksModule)
+  Object.keys(opts.checks).forEach(function (name) {
     opts[name] = null;
   });
-  opts.checks = require(checksModule)
 }
 
 var include = true;
@@ -64,7 +65,7 @@ args.filter(function (arg) {
   //an operational flag: --parse, which means parse-happy output
   //and follow a more conventional Unix exit code
     shouldParse = true;
-  } else {
+  } else if (arg.indexOf('checks=') === -1) {
     opts[arg] = true;
     include = false;
   }
@@ -72,7 +73,8 @@ args.filter(function (arg) {
 
 Object.keys(opts).forEach(function (name) {
   if (typeof opts[name] !== 'boolean'
-  &&  name !== 'text') {                 // --text="text to check"
+  &&  name !== 'text'                 // --text="text to check"
+  && name !== 'checks') {             // --checks="custom-check-module"
     opts[name] = include;
   }
 });
