@@ -26,7 +26,8 @@
   "author": "Brian Ford",
   "license": "MIT",
   "devDependencies": {
-    "jasmine-node": "2.0.0"
+    "jasmine-node": "2.0.0",
+    "schreib-gut": "0.0.1"
   },
   "dependencies": {
     "object.assign": "^4.0.4",

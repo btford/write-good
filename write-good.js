@@ -1,6 +1,6 @@
 var assign = Object.assign || require('object.assign');
 
-var checks = {
+var defaultChecks = {
   weasel  : { fn: require('weasel-words'),            explanation: 'is a weasel word' },
   illusion : { fn: require('./lib/lexical-illusions'), explanation: 'is repeated' },
   so       : { fn: require('./lib/starts-with-so'),    explanation: 'adds no meaning' },
@@ -18,12 +18,22 @@ var disabledChecks = {
 };
 
 module.exports = function (text, opts) {
+  opts = opts ? opts : {};
+  var finalOpts = {};
   opts = assign({}, disabledChecks, opts);
+  Object.keys(opts).map(function(optKey) {
+    if(optKey !== 'checks') {
+      finalOpts[optKey] = opts[optKey];
+    }
+  });
+
+  var finalChecks = opts.checks || defaultChecks;
+
   var suggestions = [];
-  Object.keys(checks).forEach(function (checkName) {
-    if (opts[checkName] !== false) {
-      suggestions = suggestions.concat(checks[checkName].fn(text).
-                          map(reasonable(checks[checkName].explanation)));
+  Object.keys(finalChecks).forEach(function (checkName) {
+    if (finalOpts[checkName] !== false) {
+      suggestions = suggestions.concat(finalChecks[checkName].fn(text).
+                          map(reasonable(finalChecks[checkName].explanation)));
     }
   });
 

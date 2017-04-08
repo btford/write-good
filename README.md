@@ -43,6 +43,18 @@ var suggestions = writeGood('So the cat was stolen', { passive: false});
 // suggestions: []
 ```
 
+You can use the second argument's `checks` property to pass in custom checks instead of `write-good`'s default linting configuration.
+Like this, you can check non-English documents, for example with the linter extension for German language, [schreib-gut](https://github.com/TimKam/schreib-gut) (experimental):
+
+
+```javascript
+var schreibGut = require('schreib-gut');
+
+writeGood('Aller Wahrscheinlichkeit nach können Entwickler nicht gut schreiben', { weasel-words: false, checks: schreibGut});
+
+// suggestions
+// [{index : 0, offset : 29, reason : '"Aller Wahrscheinlichkeit nach" is wordy or unneeded' }]
+```
 
 ## CLI
 
@@ -110,6 +122,13 @@ You can even fetch output from a remote file:
 
 ```shell
 write-good --text="$(curl https://raw.githubusercontent.com/btford/write-good/master/README.md)"
+```
+
+To specify a custom checks extension, for example [schreib-gut](https://github.com/TimKam/schreib-gut) (experimental), run:
+
+```shell
+npm install -g schreib-gut
+write-good *.md --checks=schreib-gut
 ```
 
 ## Checks
