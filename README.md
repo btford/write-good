@@ -92,6 +92,13 @@ Or exclude checks like this:
 write-good *.md --no-passive
 ```
 
+Or include checks like this:
+
+```shell
+# E-Prime is disabled by default.
+write-good *.md --yes-eprime
+```
+
 You can run just with text without supplying files:
 
 ```shell
@@ -151,6 +158,9 @@ Checks for wordy phrases and unnecessary words.
 
 ### `cliches`
 Checks for common cliches.
+
+### `eprime`
+Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_ 
 
 ## See also
 

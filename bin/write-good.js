@@ -36,7 +36,8 @@ if (!checksModule) {
     passive  : null,
     adverb   : null,
     tooWordy : null,
-    cliches  : null
+    cliches  : null,
+    eprime   : false // User must opt-in
   };
 } else {
   opts.checks = require(checksModule)
@@ -60,6 +61,8 @@ args.filter(function (arg) {
     textInputSupplied = inputSupplied = true;
   } else if (arg.substr(0, 3) === 'no-') {
     opts[arg.substr(3)] = false;
+  } else if (arg.substr(0, 4) === 'yes-') {
+    opts[arg.substr(4)] = true;
   } else if (arg == 'parse') {
   //overload the lint option logic above, to include
   //an operational flag: --parse, which means parse-happy output
