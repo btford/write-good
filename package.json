@@ -1,6 +1,6 @@
 {
   "name": "write-good",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "description": "Naive linter for English prose",
   "main": "write-good.js",
   "repository": {
@@ -39,7 +39,7 @@
     "weasel-words": "^0.1.1"
   },
   "coordinates": [
-    55.9471156,
-    -3.1868325
+    37.6186704,
+    -122.3933344
   ]
 }
