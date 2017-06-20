@@ -30,13 +30,13 @@
     "schreib-gut": "0.0.1"
   },
   "dependencies": {
+    "adverb-where": "0.0.9",
+    "e-prime": "^0.10.2",
+    "no-cliches": "^0.1.0",
     "object.assign": "^4.0.4",
-    "passive-voice": "~0.0.0",
-    "weasel-words": "~0.1.0",
-    "adverb-where": "~0.0.0",
-    "too-wordy": "~0.1.0",
-    "no-cliches": "~0.1.0",
-    "e-prime": "~0.10.0"
+    "passive-voice": "^0.1.0",
+    "too-wordy": "^0.1.4",
+    "weasel-words": "^0.1.1"
   },
   "coordinates": [
     55.9471156,
