@@ -175,7 +175,6 @@ They might be helpful.
 * [natural](https://github.com/NaturalNode/natural) – general purpose NLP toolkit in JavaScript
 * [WordNet](http://wordnet.princeton.edu/) – lexical database of the English language
 * [LanguageTool](https://languagetool.org/) – style and grammar checker implemented in Java
-* [linter-write-good](https://github.com/gepoch/linter-write-good) for [Atom](https://atom.io/)
 
 ### Prose
 
@@ -191,6 +190,11 @@ These apps have similar functionality that you may find useful.
 
 * [Hemingway App](http://www.hemingwayapp.com/)
 * [Nitpicker](http://nitpickertool.com)
+
+## Other projects using write good
+
+* [linter-write-good](https://github.com/gepoch/linter-write-good) for [Atom](https://atom.io/)
+* [Write Good action](https://drafts4-actions.agiletortoise.com/a/2D7) for [Drafts](http://agiletortoise.com/drafts/index.html) iOS App
 
 ## License
 MIT
