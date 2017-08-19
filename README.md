@@ -136,28 +136,36 @@ write-good *.md --checks=schreib-gut
 You can disable any combination of the following by providing a key with value `false` as the second argument to `writeGood`.
 
 ### `passive`
-Checks for passive voice.
+Checks for passive voice.  
+See [«Is using passive voice “bad form”?»](http://english.stackexchange.com/q/32311/195212)
 
 ### `illusion`
-Checks for lexical illusions – cases where a word is repeated.
+Checks for lexical illusions – cases where a word is repeated.  
+See [«Communication Design: What are some interesting lexical illusions?»](https://www.quora.com/unanswered/Communication-Design-What-are-some-interesting-lexical-illusions)
 
 ### `so`
-Checks for `so` at the beginning of the sentence.
+Checks for `so` at the beginning of the sentence.  
+See [«Sentences beginning with “so”?»](http://english.stackexchange.com/q/43273/195212)
 
 ### `thereIs`
-Checks for `there is` or `there are` at the beginning of the sentence.
+Checks for `there is` or `there are` at the beginning of the sentence.  
+See [«Why should sentences not start with “there is” or “there are”?»](http://english.stackexchange.com/q/157830/195212)
 
 ### `weasel`
-Checks for "weasel words."
+Checks for "weasel words."  
+See [«“Weasel word” — English Wikipedia article»](https://en.wikipedia.org/wiki/Weasel_word).
 
 ### `adverb`
-Checks for adverbs that can weaken meaning: really, very, extremely, etc.
+Checks for adverbs that can weaken meaning: really, very, extremely, etc.  
+See [«Pretty, fairly, really, very, and quite»](http://www.learnersdictionary.com/qa/pretty-fairly-really-very-and-quite).
 
 ### `tooWordy`
-Checks for wordy phrases and unnecessary words.
+Checks for wordy phrases and unnecessary words.  
+See [«Wordy phrases»](http://grammarist.com/wordiness/).
 
 ### `cliches`
-Checks for common cliches.
+Checks for common cliches.  
+See [«681 Cliches to Avoid in Your Creative Writing»](http://www.be-a-better-writer.com/cliches.html).
 
 ### `eprime`
 Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_ 
