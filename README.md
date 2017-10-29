@@ -44,7 +44,7 @@ var suggestions = writeGood('So the cat was stolen', { passive: false});
 ```
 
 You can use the second argument's `checks` property to pass in custom checks instead of `write-good`'s default linting configuration.
-Like this, you can check non-English documents, for example with the linter extension for German language, [schreib-gut](https://github.com/TimKam/schreib-gut) (experimental):
+Like this, you can check non-English documents, for example with the linter extension for German language, [schreib-gut](https://github.com/TimKam/schreib-gut):
 
 
 ```javascript
@@ -124,7 +124,7 @@ You can even fetch output from a remote file:
 write-good --text="$(curl https://raw.githubusercontent.com/btford/write-good/master/README.md)"
 ```
 
-To specify a custom checks extension, for example [schreib-gut](https://github.com/TimKam/schreib-gut) (experimental), run:
+To specify a custom checks extension, for example [schreib-gut](https://github.com/TimKam/schreib-gut), run:
 
 ```shell
 npm install -g schreib-gut
@@ -160,7 +160,77 @@ Checks for wordy phrases and unnecessary words.
 Checks for common cliches.
 
 ### `eprime`
-Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_ 
+Checks for ["to-be"](https://en.wikipedia.org/wiki/E-Prime) verbs. _Disabled by default_
+
+## Extensions
+Users can create their own `write-good` language checks. As described above,
+you can specify such extensions when running `write-good` on the command line
+or calling it in your JavaScript code.
+
+The following 3rd-party `write-good` extensions are available:
+
+* [schreib-gut](https://github.com/timkam/schreib-gut): A basic extension for
+  the German language
+
+If you know of any `write-good` extensions that is not in this list, please add
+a pull request!
+
+### Interface
+An extension is a Node.js module that exposes an object containing a check
+function (``fn``) and an ``explanation`` string for each new check:
+
+```javascript
+module.exports = {
+  check1: {
+    fn: function(text) {
+      …
+    },
+    explanation: '…'
+  },
+  check2: {
+    fn: function(text) {
+      …
+    },
+    explanation: '…'
+  }
+}
+```
+
+Each check function takes a string input and determines a list of style
+violation objects, each with an ``index`` and an ``offset``:
+
+```javascript
+/**
+* @param {text} text  Input text
+* @return {{index:number, offset:number}[]}  List of all violations
+*/
+```
+
+The ``index`` defines the position of the match in the input text, whereas the
+``offset`` specifies the length of the match.
+
+The following example extension provides a check that determines if the input
+text contains a set of forbidden terms (*Tom Riddle* and *Voldemort*):
+
+```javascript
+module.exports = {
+  voldemort: {
+    fn: function (text) {
+      var positives = ['Tom Riddle', 'Voldemort']
+      var re = new RegExp('\\b(' + positives.join('|') + ')\\b', 'gi');
+      var suggestions = [];
+      while (match = re.exec(text)) {
+        suggestions.push({
+          index: match.index,
+          offset: match[0].length,
+        });
+      }
+      return suggestions;
+    },
+    explanation: 'You must not name Him-Who-Must-Not-Be-Named'
+  }
+}
+```
 
 ## See also
 
