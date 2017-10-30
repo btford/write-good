@@ -44,7 +44,7 @@ var suggestions = writeGood('So the cat was stolen', { passive: false});
 ```
 
 You can use the second argument's `checks` property to pass in custom checks instead of `write-good`'s default linting configuration.
-Like this, you can check non-English documents, for example with the linter extension for German language, [schreib-gut](https://github.com/TimKam/schreib-gut):
+Like this, you can check non-English documents, for example with the linter extension for German, [schreib-gut](https://github.com/TimKam/schreib-gut):
 
 
 ```javascript
@@ -172,8 +172,7 @@ The following 3rd-party `write-good` extensions are available:
 * [schreib-gut](https://github.com/timkam/schreib-gut): A basic extension for
   the German language
 
-If you know of any `write-good` extensions that is not in this list, please add
-a pull request!
+If you know of any `write-good` extensions that are not in this list, please open a pull request!
 
 ### Interface
 An extension is a Node.js module that exposes an object containing a check
