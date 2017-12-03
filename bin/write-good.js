@@ -1,53 +1,112 @@
 #!/usr/bin/env node
 
+var program   = require('commander');
 var fs        = require('fs');
+var package   = require('../package.json');
 var writeGood = require('../write-good');
 var annotate  = require('../lib/annotate');
-var args      = process.argv.slice(2);
-var files     = args.filter(function (arg) {
-  return arg.substr(0, 2) !== '--';
-});
 
-if (args[0] === '--version'){
-  var version = require('../package.json').version;
-  console.log('write-good version ' + version);
-  process.exit(0);
-}
+program
+  .version(package.version)
+  .usage('[options] <file ...>')
+  .description('write-good is a naive linter for English prose.')
+  .option('--checks <module>',
+    'add a custom checks module. ' +
+    'If you specify such a module, write-good will support additional options to (de)activate checks of the custom module.',
+    {isDefault: true}
+  )
+  .option(
+    '--text <text>',
+    'provide direct text input instead of glob/file name'
+  )
+  .option(
+    '--parse',
+    'activate parse-happy output and a more conventional Unix exit code'
+  );
 
-if (files.length === 0 && !args.some(arg => arg.startsWith('--text'))) {
-  console.log('You did not provide any files to check');
-  process.exit(1);
-}
-
-//set custom ops, i.e. to lint a non-English document
+var args = process.argv.slice(2);
 var checksArg = args.find(function (arg) {
     return arg.startsWith('--checks');
 });
 
 var checksModule = checksArg ? checksArg.replace('--checks=', '') : undefined;
 
+var checks = [ // default checks
+  ['weasel', 'weasel word'],
+  ['illusion', 'lexical illusion'],
+  ['so', 'so'],
+  ['thereIs', 'there is'],
+  ['passive', 'passive voice'],
+  ['adverb', 'adverb weakens meaning'],
+  ['tooWordy', 'too wordy'],
+  ['cliches', 'clichés']
+];
+
+function generateDeactivationDescription(checkName) {
+  return "deactivate the '" +  checkName + "' check";
+}
+
+function generateActivationDescription(checkName) {
+  return "activate the '" +  checkName + "' check and" +
+    "deactivate all other checks that aren't explicitely activated";
+}
+
+function generateCheckOptions(checkParams) {
+  var checkOption = Array.isArray(checkParams) ? checkParams[0] : checkParams;
+  var checkName = Array.isArray(checkParams) ? checkParams[1] : checkParams;
+  program
+    .option(
+      '--no-' + checkOption,
+      generateDeactivationDescription(checkName),
+      {isDefault: true}
+    )
+    .option(
+      '--' + checkOption,
+      generateActivationDescription(checkName),
+      {isDefault: true}
+    );
+  opts[checkOption] = null;
+}
+
 var opts = {};
 if (!checksModule) {
   opts = {
-    weasel   : null,
-    illusion : null,
-    so       : null,
-    thereIs  : null,
-    passive  : null,
-    adverb   : null,
-    tooWordy : null,
-    cliches  : null,
-    eprime   : false // User must opt-in
+    eprime: false // user must opt-in
   };
-} else {
-  opts.checks = require(checksModule)
-  Object.keys(opts.checks).forEach(function (name) {
-    opts[name] = null;
-  });
+  program
+  .option(
+    '--eprime',
+    generateActivationDescription('E-Prime')
+  )
+  .option(
+    '--yes-eprime',
+    "activate 'E-Prime' check, without deactiving the other checks"
+  );
+  checks.forEach(generateCheckOptions);
+} else { // set custom ops, for example to lint a non-English document
+  try {
+    opts.checks = require(checksModule);
+  } catch (e) {
+    console.log(
+      'could not import custom check module. ' +
+      'Check for spelling errors and make sure you have the module installed.');
+    process.exit(1);
+  }
+  // dynamically set up custom options to prevent "false negative"
+  // commander.js feedback
+  Object.keys(opts.checks).forEach(generateCheckOptions);
+}
+
+var files = program.parse(process.argv).args;
+// 'parse' is a commander.js edge case:
+var shouldParse = Object.keys(program).indexOf('parse') !== -1;
+
+if (files.length === 0 && !args.some(arg => arg.startsWith('--text'))) {
+  console.log('you did not provide any files to check');
+  process.exit(1);
 }
 
 var include = true;
-var shouldParse = false;
 var inputSupplied = files.length;
 var textInputSupplied = false;
 
@@ -64,10 +123,6 @@ args.filter(function (arg) {
   } else if (arg.substr(0, 4) === 'yes-') {
     opts[arg.substr(4)] = true;
   } else if (arg == 'parse') {
-  //overload the lint option logic above, to include
-  //an operational flag: --parse, which means parse-happy output
-  //and follow a more conventional Unix exit code
-    shouldParse = true;
   } else if (arg.indexOf('checks=') === -1) {
     opts[arg] = true;
     include = false;

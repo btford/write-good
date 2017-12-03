@@ -99,6 +99,8 @@ Or include checks like this:
 write-good *.md --yes-eprime
 ```
 
+**Note:** The ``--yes`` prefix only works for *E-Prime*, because the other checks are included by default, anyway.
+
 You can run just with text without supplying files:
 
 ```shell
@@ -122,6 +124,12 @@ You can even fetch output from a remote file:
 
 ```shell
 write-good --text="$(curl https://raw.githubusercontent.com/btford/write-good/master/README.md)"
+```
+
+Use the ``--parse`` option to activate parse-happy output and a more conventional Unix exit code:
+
+```shell
+write-good *.md --parse
 ```
 
 To specify a custom checks extension, for example [schreib-gut](https://github.com/TimKam/schreib-gut), run:

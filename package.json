@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "adverb-where": "0.0.9",
+    "commander": "^2.12.2",
     "e-prime": "^0.10.2",
     "no-cliches": "^0.1.0",
     "object.assign": "^4.0.4",
