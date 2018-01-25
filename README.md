@@ -266,6 +266,7 @@ These apps have similar functionality that you may find useful.
 * [linter-write-good](https://github.com/gepoch/linter-write-good) for [Atom](https://atom.io/)
 * [Write Good action](https://drafts4-actions.agiletortoise.com/a/2D7) for [Drafts](http://agiletortoise.com/drafts/index.html) iOS App
 * [Write Good Linter](https://marketplace.visualstudio.com/items?itemName=travisthetechie.write-good-linter) for [Visual Studio Code](https://code.visualstudio.com)
+* [Vim ALE](https://github.com/w0rp/ale) realtime linter for [Vim](http://www.vim.org/) with included support for write-good.
 
 ## License
 MIT
