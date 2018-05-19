@@ -48,7 +48,7 @@ function generateDeactivationDescription(checkName) {
 
 function generateActivationDescription(checkName) {
   return "activate the '" +  checkName + "' check and" +
-    "deactivate all other checks that aren't explicitely activated";
+    "deactivate all other checks that aren't explicitly activated";
 }
 
 function generateCheckOptions(checkParams) {
@@ -80,7 +80,7 @@ if (!checksModule) {
   )
   .option(
     '--yes-eprime',
-    "activate 'E-Prime' check, without deactiving the other checks"
+    "activate 'E-Prime' check, without deactivating the other checks"
   );
   checks.forEach(generateCheckOptions);
 } else { // set custom ops, for example to lint a non-English document
@@ -101,9 +101,29 @@ var files = program.parse(process.argv).args;
 // 'parse' is a commander.js edge case:
 var shouldParse = Object.keys(program).indexOf('parse') !== -1;
 
-if (files.length === 0 && !args.some(arg => arg.startsWith('--text'))) {
+var hasTextArg = args.some(function(arg) {
+  return arg.startsWith('--text')
+});
+if (files.length === 0 && !hasTextArg) {
   console.log('you did not provide any files to check');
   process.exit(1);
+}
+
+// validate arguments only if no custom checks module is provided
+var hasChecks = args.some(function(arg) {
+  return arg.startsWith('--checks');
+});
+if(!hasChecks) {
+  args.slice(1).forEach(function(arg) {
+    if(arg.startsWith('--text')) return;
+    var isValid = program.options.some(function (option) {
+      return arg === option.long || arg === option.short;
+    });
+    if(!isValid) {
+      console.log('"' + arg + '" is not a valid argument');
+      process.exit(1);
+    }
+  });
 }
 
 var include = true;
