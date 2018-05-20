@@ -112,7 +112,7 @@ describe('CLI', function() {
       '"komplett" is a weasel word on line 1 at column 27',
       '"Aller Wahrscheinlichkeit nach" is wordy or unneeded on line 3 at column 0'
     ];
-    exec('./bin/write-good.js ./test/texts/German.md --checks=schreib-gut', function(err, stdout, stderr) {
+    exec('./bin/write-good.js ./test/texts/German.md --checks=schreib-gut --weasel --tooWordy', function(err, stdout, stderr) {
       expectedWarnings.forEach(function(warning) {
         expect(stdout.includes(warning)).toBe(true);
       });
@@ -122,21 +122,28 @@ describe('CLI', function() {
 
   it('should show a meaningful error message if the user provides invalid command line arguments', function(done) {
     exec('write-good ./test/texts/German.md --nonsense', function(err, stdout, stderr) {
-      expect(stdout.trim()).toEqual('"--nonsense" is not a valid argument');
+      expect(stdout.trim()).toEqual('"--nonsense" is not a valid argument.');
       done();
     });
   });
 
   it('should show a meaningful error message if the import of the specified extension fails', function(done) {
     exec('./bin/write-good.js ./test/texts/German.md --checks=nonsense', function(err, stdout, stderr) {
-      expect(stdout.trim()).toEqual('could not import custom check module. Check for spelling errors and make sure you have the module installed.');
+      expect(stdout.trim()).toEqual('Could not import custom check module. Check for spelling errors and make sure you have the module installed.');
+      done();
+    });
+  });
+
+  it('should show a meaningful error message if the user provides invalid command line arguments and extension', function(done) {
+    exec('./bin/write-good.js ./test/texts/German.md --checks=schreib-gut --adverb --weasel', function(err, stdout, stderr) {
+      expect(stdout.trim()).toEqual('"--adverb" is not a valid argument.');
       done();
     });
   });
 
   it('should show a meaningful error message if the user does not provide any file to check', function(done) {
   exec('./bin/write-good.js', function(err, stdout, stderr) {
-    expect(stdout.trim()).toEqual('you did not provide any files to check');
+    expect(stdout.trim()).toEqual('You did not provide any files to check.');
     done();
   });
   });

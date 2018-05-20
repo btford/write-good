@@ -88,12 +88,11 @@ if (!checksModule) {
     opts.checks = require(checksModule);
   } catch (e) {
     console.log(
-      'could not import custom check module. ' +
+      'Could not import custom check module. ' +
       'Check for spelling errors and make sure you have the module installed.');
     process.exit(1);
   }
-  // dynamically set up custom options to prevent "false negative"
-  // commander.js feedback
+  // dynamically set up custom options
   Object.keys(opts.checks).forEach(generateCheckOptions);
 }
 
@@ -105,25 +104,41 @@ var hasTextArg = args.some(function(arg) {
   return arg.startsWith('--text')
 });
 if (files.length === 0 && !hasTextArg) {
-  console.log('you did not provide any files to check');
+  console.log('You did not provide any files to check.');
   process.exit(1);
 }
 
-// validate arguments only if no custom checks module is provided
 var hasChecks = args.some(function(arg) {
   return arg.startsWith('--checks');
 });
-if(!hasChecks) {
+
+var handleInvalidArgument = function(arg) {
+  console.log('"' + arg + '" is not a valid argument.');
+  process.exit(1);
+}
+
+if(hasChecks) {
+  // validate base args and infer valid check args from the imported custom check module
+  args.slice(1).forEach(function(arg) {
+    if(arg.startsWith('--text') || arg.startsWith('--checks') || arg === '--parse') return;
+    var isValid = Object.keys(opts.checks).some(function(check) {
+      return arg === '--' + check || arg === '--no-' + check;
+    });
+    if(!isValid) {
+      handleInvalidArgument(arg);
+    }
+  });
+} else {
+  // validate default args if no custom checks module is provided
   args.slice(1).forEach(function(arg) {
     if(arg.startsWith('--text')) return;
     var isValid = program.options.some(function (option) {
       return arg === option.long || arg === option.short;
     });
     if(!isValid) {
-      console.log('"' + arg + '" is not a valid argument');
-      process.exit(1);
+      handleInvalidArgument(arg);
     }
-  });
+  }); 
 }
 
 var include = true;
