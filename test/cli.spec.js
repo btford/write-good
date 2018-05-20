@@ -61,7 +61,7 @@ describe('CLI', function() {
         done();
     });
   });
-   
+
   it('should support running only the checks provided as command line arguments', function(done) {
     exec('./bin/write-good.js test/texts/English.md --weasel', function(err, stdout, stderr) {
       expectedWarningsNotWeasel.forEach(function(warning) {
@@ -74,7 +74,7 @@ describe('CLI', function() {
       done();
     });
   });
-  
+
   it('should support deactivating checks', function(done) {
     exec('./bin/write-good.js test/texts/English.md --no-weasel', function(err, stdout, stderr) {
       var notExpectedWarnings = expectedWarningsOnlyWeasel.concat(expectedWarningsPartWeaselOnly);
@@ -121,7 +121,7 @@ describe('CLI', function() {
   });
 
   it('should show a meaningful error message if the user provides invalid command line arguments', function(done) {
-    exec('write-good ./test/texts/German.md --nonsense', function(err, stdout, stderr) {
+    exec('./bin/write-good.js ./test/texts/German.md --nonsense', function(err, stdout, stderr) {
       expect(stdout.trim()).toEqual('"--nonsense" is not a valid argument.');
       done();
     });
