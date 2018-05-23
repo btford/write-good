@@ -147,4 +147,18 @@ describe('CLI', function() {
     done();
   });
   });
+
+  it('should support globs', function(done) {
+    exec('./bin/write-good.js test/**/*.md', function(err, stdout, stderr) {
+      var english2Warnings = ['"Playing the field" is a cliche on line 1 at column 0'];
+      var expectedWarnings = expectedWarningsNotWeasel
+        .concat(expectedWarningsOnlyWeasel)
+        .concat(expectedWarningsPartWeaselPlus)
+        .concat(english2Warnings);
+      expectedWarnings.forEach(function(warning) {
+        expect(stdout.includes(warning)).toBe(true);
+      });
+      done();
+    });
+  });
 });
