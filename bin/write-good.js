@@ -129,8 +129,11 @@ if(hasChecks) {
     }
   });
 } else {
+  var optionArgs = args.filter(function(arg) {
+    return !files.includes(arg);
+  });
   // validate default args if no custom checks module is provided
-  args.slice(1).forEach(function(arg) {
+  optionArgs.forEach(function(arg) {
     if(arg.startsWith('--text')) return;
     var isValid = program.options.some(function (option) {
       return arg === option.long || arg === option.short;
