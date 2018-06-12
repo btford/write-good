@@ -68,3 +68,4 @@ function dedup (suggestions) {
 }
 
 module.exports.annotate = require('./lib/annotate');
+module.exports.remove_markdown = require('./lib/remove-markdown');
