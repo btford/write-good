@@ -47,7 +47,7 @@ function generateDeactivationDescription(checkName) {
 }
 
 function generateActivationDescription(checkName) {
-  return "activate the '" +  checkName + "' check and" +
+  return "activate the '" +  checkName + "' check and " +
     "deactivate all other checks that aren't explicitly activated";
 }
 
