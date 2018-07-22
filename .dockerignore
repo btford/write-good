@@ -1,0 +1,8 @@
+*
+!bin
+!lib
+!LICENSE
+!package.json
+!package-lock.json
+!README.md
+!write-good.js
