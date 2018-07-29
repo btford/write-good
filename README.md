@@ -239,6 +239,12 @@ module.exports = {
 }
 ```
 
+## Docker
+
+You can also run this application in [Docker](https://www.docker.com). For example:
+
+`docker run -it --rm "$(pwd)":/srv/app -w /srv/app btford/write-good:latest *.md`
+
 ## See also
 
 I came across these resources while doing research to make this module.
