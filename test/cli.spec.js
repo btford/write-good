@@ -161,4 +161,12 @@ describe('CLI', function() {
       done();
     });
   });
+
+  it('should not try to read in directories as files when globs do not specify file ending', function(done) {
+    exec('./bin/write-good.js test/** --so', function(err, stdout, stderr) {
+      // this error is expected; we have a problem if we get a different error:
+      expect(err.toString().trim()).toEqual('Error: Command failed: ./bin/write-good.js test/** --so');
+      done();
+    });
+  });
 });
