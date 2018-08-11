@@ -186,8 +186,10 @@ if (textInputSupplied) {
   displaySuggestions('text', opts['text'], opts);
 } else {
   files.forEach(function (file) {
-    var contents = fs.readFileSync(file, 'utf8');
-    displaySuggestions(file, contents, opts);
+    if (fs.lstatSync(file).isFile()) {
+      var contents = fs.readFileSync(file, 'utf8');
+      displaySuggestions(file, contents, opts);
+    }
   })
 };
 
