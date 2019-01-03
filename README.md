@@ -148,35 +148,7 @@ write-good *.md --checks=schreib-gut
 To view all available options use the ``--help`` option:
 
 ```shell
-$ npx write-good --help
-Usage: write-good [options] <file ...>                                                                                        
-                                                                                                                              
-write-good is a naive linter for English prose.                                                                               
-                                                                                                                              
-Options:                                                                                                                      
-  -V, --version      output the version number                                                                                
-  --checks <module>  add a custom checks module. If you specify such a module, write-good will support additional options to (de)activate checks of the custom module. (default: {"isDefault":true})                                                        
-  --text <text>      provide direct text input instead of glob/file name                                                      
-  --parse            activate parse-happy output and a more conventional Unix exit code                                       
-  --eprime           activate the 'E-Prime' check and deactivate all other checks that aren't explicitly activated            
-  --yes-eprime       activate 'E-Prime' check, without deactivating the other checks                                          
-  --no-weasel        deactivate the 'weasel word' check                                                                       
-  --weasel           activate the 'weasel word' check and deactivate all other checks that aren't explicitly activated        
-  --no-illusion      deactivate the 'lexical illusion' check                                                                  
-  --illusion         activate the 'lexical illusion' check and deactivate all other checks that aren't explicitly activated   
-  --no-so            deactivate the 'so' check                                                                                
-  --so               activate the 'so' check and deactivate all other checks that aren't explicitly activated                 
-  --no-thereIs       deactivate the 'there is' check                                                                          
-  --thereIs          activate the 'there is' check and deactivate all other checks that aren't explicitly activated           
-  --no-passive       deactivate the 'passive voice' check                                                                     
-  --passive          activate the 'passive voice' check and deactivate all other checks that aren't explicitly activated      
-  --no-adverb        deactivate the 'adverb weakens meaning' check                                                            
-  --adverb           activate the 'adverb weakens meaning' check and deactivate all other checks that aren't explicitly activated                                                                                                                           
-  --no-tooWordy      deactivate the 'too wordy' check                                                                         
-  --tooWordy         activate the 'too wordy' check and deactivate all other checks that aren't explicitly activated          
-  --no-cliches       deactivate the 'clichés' check                                                                           
-  --cliches          activate the 'clichés' check and deactivate all other checks that aren't explicitly activated            
-  -h, --help         output usage information                                                                                 
+write-good --help
 ```
 
 ## Checks
