@@ -64,6 +64,12 @@ You can use `write-good` as a command-line tool by installing it globally:
 npm install -g write-good
 ```
 
+If you have npm version 5.2.0 or later installed, you can use npx to run write-good without installing it:
+
+```shell
+npx write-good *.md
+```
+
 `write-good` takes a [glob](https://github.com/isaacs/node-glob) and prints suggestions to stdout:
 
 ```shell
@@ -137,6 +143,12 @@ To specify a custom checks extension, for example [schreib-gut](https://github.c
 ```shell
 npm install -g schreib-gut
 write-good *.md --checks=schreib-gut
+```
+
+To view all available options use the ``--help`` option:
+
+```shell
+write-good --help
 ```
 
 ## Checks
