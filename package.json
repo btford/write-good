@@ -11,6 +11,10 @@
     "write-good": "bin/write-good.js",
     "writegood": "bin/write-good.js"
   },
+  "engines": {
+    "node": ">=6",
+    "npm": ">=5"
+  },
   "directories": {
     "test": "test"
   },

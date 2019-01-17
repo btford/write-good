@@ -53,7 +53,7 @@ function reasonable(text, reason) {
 
 module.exports = function writeGood(text, opts = {}) {
   const finalOpts = {};
-  const defaultOpts = { ...disabledChecks, ...opts };
+  const defaultOpts = Object.assign({}, disabledChecks, opts);
   Object.keys(defaultOpts).forEach((optKey) => {
     if (optKey !== 'checks') {
       finalOpts[optKey] = defaultOpts[optKey];
