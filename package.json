@@ -21,12 +21,18 @@
     "english",
     "writing",
     "prose",
-    "words"
+    "words",
+    "grammar"
   ],
   "author": "Brian Ford",
   "license": "MIT",
   "devDependencies": {
-    "jasmine-node": "2.0.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.3",
+    "jasmine-node": "^2.0.1",
     "schreib-gut": "0.0.1"
   },
   "dependencies": {
@@ -34,7 +40,6 @@
     "commander": "^2.19.0",
     "e-prime": "^0.10.2",
     "no-cliches": "^0.1.0",
-    "object.assign": "^4.0.4",
     "passive-voice": "^0.1.0",
     "too-wordy": "^0.2.1",
     "weasel-words": "^0.1.1"
