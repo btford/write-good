@@ -53,17 +53,17 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.3",
+    "eslint-plugin-react": "^7.12.4",
     "jasmine-node": "^2.0.1",
     "schreib-gut": "0.0.1"
   },
   "dependencies": {
-    "adverb-where": "^0.2.0",
+    "adverb-where": "^0.2.1",
     "commander": "^2.19.0",
     "e-prime": "^0.10.2",
-    "no-cliches": "^0.1.0",
+    "no-cliches": "^0.2.2",
     "passive-voice": "^0.1.0",
-    "too-wordy": "^0.2.1",
+    "too-wordy": "^0.2.2",
     "weasel-words": "^0.1.1"
   },
   "coordinates": [
