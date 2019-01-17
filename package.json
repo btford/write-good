@@ -29,6 +29,11 @@
     "grammar"
   ],
   "author": "Brian Ford",
+  "contributors": [
+    { "name": "Richard Littauer", "email": "richard@maintainer.io", "url": "https://burntfen.com" },
+    { "name": "Matt Blair", "email": "matt@mattblair.co", "url": "https://blog.mattblair.co" },
+    { "name": "Timotheus Kampik", "email": "", "url": "timotheuskampik.de" }
+  ],
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.12.0",
