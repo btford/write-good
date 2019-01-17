@@ -1,4 +1,5 @@
-const exec = require('child_process').exec;
+/* eslint-disable no-unused-vars */
+const { exec } = require('child_process');
 
 describe('CLI', () => {
   const expectedWarningsNotWeasel = [
