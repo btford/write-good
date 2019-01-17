@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:dubnium
 COPY . /tmp/write-good
 RUN yarn global add --no-progress file:/tmp/write-good
 WORKDIR /srv/app

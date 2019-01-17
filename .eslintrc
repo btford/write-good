@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "extends": "airbnb",
+  "rules": {
+    "no-plusplus": 0,
+    "no-mixed-operators": 0,
+    "comma-dangle": 0
+  }
+}
