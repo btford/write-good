@@ -160,7 +160,7 @@ describe('writeGood', () => {
 });
 
 describe('annotate', () => {
-  const annotate = writeGood.annotate;
+  const { annotate } = writeGood;
 
   it('should detect weasel words', () => {
     const text = 'Remarkably few developers write well.';
@@ -168,13 +168,15 @@ describe('annotate', () => {
     const annotations = annotate(text, suggestions);
 
     expect(annotations[0]).toBe(
-      'Remarkably few developers write well.\n' +
-      '^^^^^^^^^^\n' +
-      '"Remarkably" is a weasel word and can weaken meaning on line 1 at column 0');
+      'Remarkably few developers write well.\n'
+      + '^^^^^^^^^^\n'
+      + '"Remarkably" is a weasel word and can weaken meaning on line 1 at column 0'
+    );
 
     expect(annotations[1]).toBe(
-      'Remarkably few developers write well.\n' +
-      '           ^^^\n' +
-      '"few" is a weasel word on line 1 at column 11');
+      'Remarkably few developers write well.\n'
+      + '           ^^^\n'
+      + '"few" is a weasel word on line 1 at column 11'
+    );
   });
 });

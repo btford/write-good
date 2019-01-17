@@ -19,7 +19,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node test"
+    "test": "npm run lint && ./node_modules/.bin/jasmine-node test",
+    "lint": "eslint ./ --fix"
   },
   "keywords": [
     "english",

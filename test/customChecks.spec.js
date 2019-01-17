@@ -1,5 +1,5 @@
-const writeGood = require('../write-good');
 const schreibGut = require('schreib-gut');
+const writeGood = require('../write-good');
 
 describe('if we use a custom German language check', () => {
   it('should detect German weasel words', () => {

@@ -5,11 +5,5 @@
     "no-plusplus": 0,
     "no-mixed-operators": 0,
     "comma-dangle": 0
-  },
-  "globals": {
-    "describe": true,
-    "beforeEach": true,
-    "it": true,
-    "expect": true
   }
 }

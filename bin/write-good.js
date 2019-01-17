@@ -17,7 +17,8 @@ program
     { isDefault: true })
   .option(
     '--text <text>',
-    'provide direct text input instead of glob/file name')
+    'provide direct text input instead of glob/file name'
+  )
   .option(
     '--parse',
     'activate parse-happy output and a more conventional Unix exit code'
@@ -44,8 +45,8 @@ function generateDeactivationDescription(checkName) {
 }
 
 function generateActivationDescription(checkName) {
-  return `activate the '${checkName}' check and ` +
-    'deactivate all other checks that aren\'t explicitly activated';
+  return `activate the '${checkName}' check and `
+    + 'deactivate all other checks that aren\'t explicitly activated';
 }
 let opts = {};
 
@@ -86,8 +87,9 @@ if (!checksModule) {
     opts.checks = require(checksModule);
   } catch (e) {
     console.log(
-      'Could not import custom check module. ' +
-      'Check for spelling errors and make sure you have the module installed.');
+      'Could not import custom check module. '
+      + 'Check for spelling errors and make sure you have the module installed.'
+    );
     process.exit(1);
   }
   // dynamically set up custom options
