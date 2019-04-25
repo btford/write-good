@@ -163,6 +163,10 @@ describe('writeGood', () => {
       { index: 17, offset: 4, reason: '"only" can weaken meaning' }
     ]);
   });
+
+  it('should ignore white-listed words', () => {
+    expect(writeGood('Never write read-only sentences.', { whitelist: ['read-only'] })).toEqual([]);
+  });
 });
 
 describe('annotate', () => {

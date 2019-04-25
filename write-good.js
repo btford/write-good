@@ -26,6 +26,37 @@ const disabledChecks = {
   eprime: false
 };
 
+function filter(text, suggestions, whitelistTerms = []) {
+  const whitelistSlices = whitelistTerms.reduce((memo, term) => {
+    let index = text.indexOf(term);
+    while (index > 0) {
+      memo.push({ from: index, to: index + term.length });
+      index = text.indexOf(term, index + 1);
+    }
+    return memo;
+  }, []);
+
+  return suggestions.reduce((memo, suggestion) => {
+    if (!whitelistSlices.find((slice) => {
+      const suggestionFrom = suggestion.index;
+      const suggestionTo = suggestion.index + suggestion.offset;
+      return (
+        // suggestion covers entire whitelist term
+        suggestionFrom <= slice.from && suggestionTo >= slice.to
+      ) || (
+        // suggestion starts within whitelist term
+        suggestionFrom >= slice.from && suggestionFrom <= slice.to
+      ) || (
+        // suggestion ends within whitelist term
+        suggestionTo >= slice.from && suggestionTo <= slice.to
+      );
+    })) {
+      memo.push(suggestion);
+    }
+    return memo;
+  }, []);
+}
+
 function dedup(suggestions) {
   const dupsHash = {};
 
@@ -73,7 +104,9 @@ module.exports = function writeGood(text, opts = {}) {
     }
   });
 
-  return dedup(suggestions).sort((a, b) => (a.index < b.index ? -1 : 1));
+  const filtered = filter(text, suggestions, opts.whitelist);
+
+  return dedup(filtered).sort((a, b) => (a.index < b.index ? -1 : 1));
 };
 
 module.exports.annotate = require('./lib/annotate');
