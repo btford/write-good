@@ -157,6 +157,12 @@ describe('writeGood', () => {
   it('shouldn\'t flag words starting with "is" as an error', () => {
     expect(writeGood('Isle of Man', { eprime: true })).toEqual([]);
   });
+
+  it('should detect weakening adverbs', () => {
+    expect(writeGood('Never write read-only sentences.')).toEqual([
+      { index: 17, offset: 4, reason: '"only" can weaken meaning' }
+    ]);
+  });
 });
 
 describe('annotate', () => {
