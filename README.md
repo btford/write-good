@@ -267,9 +267,21 @@ module.exports = {
 
 ## Docker
 
-You can also run this application in [Docker](https://www.docker.com). For example:
+### From Dockerhub
 
-`docker run -it --rm "$(pwd)":/srv/app -w /srv/app btford/write-good:latest *.md`
+You can also run this application in [Docker](https://www.docker.com). Using a pre-built [image from Dockerhub](https://hub.docker.com/r/hochzehn/write-good/), the write-good can be run with this command:
+
+`docker run --rm --volume $PWD:/app hochzehn/write-good *.md`
+
+### Building locally
+
+Or you can first build the image locally:
+
+`docker build -t btford/write-good .`
+
+And then run using:
+
+`docker run -it --rm -v "$(pwd)":/srv/app -w /srv/app btford/write-good:latest *.md`
 
 ## See also
 
