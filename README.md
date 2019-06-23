@@ -56,6 +56,20 @@ writeGood('Aller Wahrscheinlichkeit nach können Entwickler nicht gut schreiben'
 // [{index : 0, offset : 29, reason : '"Aller Wahrscheinlichkeit nach" is wordy or unneeded' }]
 ```
 
+You can use the second argument's `whitelist` property to pass in a list of strings to whitelist from suggestions.
+For example, normally `only` would be picked up as a bad word to use, but you might want to exempt `read-only` from that:
+
+```javascript
+var writeGood = require('write-good');
+
+var suggestions = writeGood('Never write read-only sentences.');
+// suggestions: [{ index: 17, offset: 4, reason: '"only" can weaken meaning' }]
+
+var filtered = writeGood('Never write read-only sentences.', { whitelist: ['read-only'] });
+// filtered: []
+
+```
+
 ## CLI
 
 You can use `write-good` as a command-line tool by installing it globally:
