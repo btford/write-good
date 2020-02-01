@@ -1,0 +1,7 @@
+---
+- id: write-good
+  name: write-good
+  description: Check docs for English prose with write-good
+  entry: write-good
+  language: node
+  files: "\\.(rst|md|markdown|mdown|mkdn)$"
