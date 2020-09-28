@@ -319,6 +319,7 @@ These apps have similar functionality that you may find useful.
 * [Write Good action](https://actions.getdrafts.com/a/1RA) for [Drafts](https://getdrafts.com) iOS App
 * [Write Good Linter](https://marketplace.visualstudio.com/items?itemName=travisthetechie.write-good-linter) for [Visual Studio Code](https://code.visualstudio.com)
 * [Vim ALE](https://github.com/w0rp/ale) realtime linter for [Vim](http://www.vim.org/) with included support for write-good.
+* [Write Better](https://github.com/justiceo/write-better) A [Chrome extension](https://chrome.google.com/webstore/detail/write-better/nnnnnpmcdcloafmfkiihafnjidjkfmek) for Google Docs.
 
 ## License
 MIT
