@@ -167,6 +167,12 @@ describe('writeGood', () => {
   it('should ignore white-listed words', () => {
     expect(writeGood('Never write read-only sentences.', { whitelist: ['read-only'] })).toEqual([]);
   });
+  
+  it('should parse words boundaries with dash correctly', () => {
+    expect(writeGood('A transfer visa may be required at check-in between any connecting flight.')).toEqual([
+      { index: 20, offset: 11, reason: '"be required" may be passive voice' }
+    ]);
+  });
 });
 
 describe('annotate', () => {
