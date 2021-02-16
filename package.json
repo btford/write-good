@@ -59,12 +59,12 @@
     "schreib-gut": "0.0.1"
   },
   "dependencies": {
-    "adverb-where": "^0.2.1",
+    "adverb-where": "^0.2.2",
     "commander": "^2.19.0",
     "e-prime": "^0.10.4",
     "no-cliches": "^0.3.0",
     "passive-voice": "^0.1.0",
-    "too-wordy": "^0.3.0",
+    "too-wordy": "^0.3.1",
     "weasel-words": "^0.1.1"
   },
   "coordinates": [
