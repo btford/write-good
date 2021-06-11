@@ -39,7 +39,7 @@ You can disable checking for passive voice like this:
 ```javascript
 var writeGood = require('write-good');
 
-var suggestions = writeGood('So the cat was stolen', { passive: false});
+var suggestions = writeGood('So the cat was stolen', { passive: false });
 // suggestions: []
 ```
 
@@ -50,7 +50,7 @@ Like this, you can check non-English documents, for example with the linter exte
 ```javascript
 var schreibGut = require('schreib-gut');
 
-writeGood('Aller Wahrscheinlichkeit nach können Entwickler nicht gut schreiben', { weasel-words: false, checks: schreibGut});
+writeGood('Aller Wahrscheinlichkeit nach können Entwickler nicht gut schreiben', { weasel-words: false, checks: schreibGut });
 
 // suggestions
 // [{index : 0, offset : 29, reason : '"Aller Wahrscheinlichkeit nach" is wordy or unneeded' }]
