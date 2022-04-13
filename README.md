@@ -310,7 +310,6 @@ This is not an endorsement.
 These apps have similar functionality that you may find useful.
 
 * [Hemingway App](http://www.hemingwayapp.com/)
-* [Nitpicker](http://nitpickertool.com)
 * [Grammarly](https://app.grammarly.com)
 
 ## Other projects using write good
