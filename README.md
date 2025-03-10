@@ -316,6 +316,7 @@ These apps have similar functionality that you may find useful.
 
 * [linter-write-good](https://github.com/gepoch/linter-write-good) for [Atom](https://atom.io/)
 * [Write Good action](https://actions.getdrafts.com/a/1RA) for [Drafts](https://getdrafts.com) iOS App
+* [Write Good](https://github.com/markahesketh/write-good-obsidian/) for [Obsidian](https://obsidian.md/)
 * [Write Good Linter](https://marketplace.visualstudio.com/items?itemName=travisthetechie.write-good-linter) for [Visual Studio Code](https://code.visualstudio.com)
 * [Write Good Linter](https://github.com/Freed-Wu/coc-write-good) for Vim by
   [coc.nvim](https://github.com/neoclide/coc.nvim)
